@@ -1,0 +1,7 @@
+---
+id: appchain-smc-solidity
+title: 智能合约语言（Solidity）
+---
+
+我们支持使用与以太坊完全一样的Solidity语言来开发智能合约。详情请看他们的文档。
+
