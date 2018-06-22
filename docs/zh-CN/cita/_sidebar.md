@@ -20,5 +20,5 @@
         - [交易相关脚本](zh-cn/cita/miscellaneous/txtool)
         - [常见问题](zh-cn/cita/miscellaneous/faq)
     - API
-        - [JSON-RPC 接口](zh-cn/cita-api-rpc)
-        - [JSON-RPC 错误代码](zh-cn/cita-api-rpc_error)
+        - [JSON-RPC 接口](zh-cn/cita/api/rpc)
+        - [JSON-RPC 错误代码](zh-cn/cita/api/rpc-error)
