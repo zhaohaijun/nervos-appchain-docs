@@ -1,24 +1,24 @@
-- cita_docs
-    - 快速搭链
-        - [cita-gs-appchain](zh-cn/cita-gs-appchain)
+- CITA
+    - 快速入门
+        - [搭建一条AppChain](zh-cn/cita/get-started/appchain)
     - CITA
-        - [cita-cita-welcome](zh-cn/cita-cita-welcome)
-        - [cita-cita-architecture](zh-cn/cita-cita-architecture)
-        - [cita-cita-consensus](zh-cn/cita-cita-consensus)
-        - [cita-cita-transaction](zh-cn/cita-cita-transaction)
-        - [cita-cita-view](zh-cn/cita-cita-view)
+        - [CITA介绍](zh-cn/cita/cita/welcome)
+        - [系统架构](zh-cn/cita/cita/architecture)
+        - [共识服务](zh-cn/cita/cita/consensus)
+        - [交易处理](zh-cn/cita/cita/transaction)
+        - [视图服务](zh-cn/cita/cita/view)
     - 系统管理
-        - [cita-sysm-admintool](zh-cn/cita-sysm-admintool)
-        - [cita-sysm-quota](zh-cn/cita-sysm-quota)
-        - [cita-sysm-permission](zh-cn/cita-sysm-permission)
-        - [cita-sysm-node](zh-cn/cita-sysm-node)
-        - [cita-sysm-user](zh-cn/cita-sysm-user)
-        - [cita-sysm-log](zh-cn/cita-sysm-log)
+        - [管理工具](zh-cn/cita/system/admintool)
+        - [配额管理](zh-cn/cita/system/quota)
+        - [权限管理](zh-cn/cita/system/permission)
+        - [节点管理](zh-cn/cita/system/node)
+        - [用户管理](zh-cn/cita/system/user)
+        - [日志管理](zh-cn/cita/system/log)
     - 其他
-        - [cita-misc-glossary](zh-cn/cita-misc-glossary)
-        - [cita-misc-contributing](zh-cn/cita-misc-contributing)
-        - [cita-misc-txtool](zh-cn/cita-misc-txtool)
-        - [cita-misc-faq](zh-cn/cita-misc-faq)
+        - [词汇表](zh-cn/cita/miscellaneous/glossary)
+        - [贡献代码](zh-cn/cita/miscellaneous/contributing)
+        - [交易相关脚本](zh-cn/cita/miscellaneous/txtool)
+        - [常见问题](zh-cn/cita/miscellaneous/faq)
     - API
-        - [cita-api-rpc](zh-cn/cita-api-rpc)
-        - [cita-api-rpc_error](zh-cn/cita-api-rpc_error)
+        - [JSON-RPC 接口](zh-cn/cita-api-rpc)
+        - [JSON-RPC 错误代码](zh-cn/cita-api-rpc_error)

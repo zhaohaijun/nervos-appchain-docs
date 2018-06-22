@@ -1,7 +1,7 @@
 - Nervos AppChain
     - 快速入门
         - [AppChain 介绍](zh-cn/appchain/get-started/intro.md)
-        - [部署一个智能合约](zh-cn/appchain/get-started/smart_contract.md)
+        - [部署一个智能合约](zh-cn/appchain/get-started/smart-contract.md)
         - [完成一个DApp](zh-cn/appchain/get-started/dapp.md)
     - [经济机制](zh-cn/economic-model.md)
     - 智能合约
