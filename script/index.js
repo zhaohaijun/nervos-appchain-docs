@@ -1,7 +1,6 @@
 window.$docsify = {
   name: 'nervos docs',
-  homepage: '/cryptape/cita/develop/README.md',
-  loadSidebar: '/cryptape/nervos-appchain-docs/master/docs/_sidebar.md',
+  homepage: '/cryptape/nervos-appchain-docs/master/readme.md',
   repo: '',
   loadNavbar: true,
   autoHeader: true,
