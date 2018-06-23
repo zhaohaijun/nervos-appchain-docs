@@ -1,4 +1,4 @@
-# Nervos AppChain
+# Nervos AppChain {docsify-ignore-all}
 
 在这里我们会隆重的介绍一下AppChain。
 

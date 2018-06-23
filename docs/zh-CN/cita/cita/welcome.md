@@ -1,4 +1,4 @@
-# CITA
+# CITA {docsify-ignore-all}
 
 CITA（ Cryptape Inter-enterprise Trust Automation ）是一个面向企业级应用的支持智能合约的区块链框架，旨在为企业级区块链应用提供一个稳固、高效、灵活、可适应未来的运行平台。CITA将区块链节点的必要功能解耦为七个微服务：RPC，Auth，Consensus，Chain，Executor，Network，Forever，各组件之间通过消息总线交换信息相互协作。通过配置和定制相应的服务，CITA能够满足企业级用户的全部需要。
 

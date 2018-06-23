@@ -3,11 +3,11 @@
         - [AppChain 介绍](zh-cn/appchain/get-started/intro.md)
         - [部署一个智能合约](zh-cn/appchain/get-started/smart-contract.md)
         - [完成一个DApp](zh-cn/appchain/get-started/dapp.md)
-    - [经济机制](zh-cn/economic-model.md)
+    - [经济机制](zh-cn/appchain/economic-model.md)
     - 智能合约
         - [智能合约简介](zh-cn/appchain/smart-contract/intro.md)
-        - [appchain-smc-solidity](zh-cn/appchain/smart-contract/solidity.md)
-        - [appchain-smc-rust](zh-cn/appchain/smart-contract/rust.md)
+        - [智能合约（Solidity）](zh-cn/appchain/smart-contract/solidity.md)
+        - [智能合约（Rust）](zh-cn/appchain/smart-contract/rust.md)
     - AppChain SDK
         - [SDK简介](zh-cn/appchain/sdk/intro.md)
     - 相关信息

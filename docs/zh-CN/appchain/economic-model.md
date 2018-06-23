@@ -1,4 +1,4 @@
-# 经济模型
+# 经济模型 {docsify-ignore-all}
 
 ## Token设计概述
 一个Token通常应该包括如下三个维度的设计
