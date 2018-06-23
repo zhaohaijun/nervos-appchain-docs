@@ -1,16 +1,13 @@
-var common = {
+window.$docsify = {
   name: 'nervos docs',
+  homepage: '/cryptape/cita/develop/README.md',
+  loadSidebar: '/cryptape/nervos-appchain-docs/master/docs/_sidebar.md',
   repo: '',
-  loadSidebar: true,
+  loadNavbar: true,
   autoHeader: true,
   subMaxLevel: 6,
   loadNavbar: true,
 
   // basePath: './docs/',
   basePath: 'https://raw.githubusercontent.com/'
-
-  //   alias: {
-  //     '/.*/_sidebar.md': '/_sidebar.md',
-  //     '/.*/__navbar.md_': '/__navbar.md_',
-  //   },
 }

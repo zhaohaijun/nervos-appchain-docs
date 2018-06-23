@@ -11,9 +11,9 @@ var search = {
   // 完整配置参数
   search: {
     maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-    paths: [
-      '/',
-    ], // or 'auto'
+    // paths: [
+    // '/',
+    // ], // or 'auto'
 
     // 支持本地化
     placeholder: {
