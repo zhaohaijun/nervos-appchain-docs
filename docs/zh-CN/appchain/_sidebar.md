@@ -1,4 +1,4 @@
-- Nervos AppChain
+- AppChain
     - 快速入门
         - [AppChain 介绍](zh-cn/appchain/get-started/intro.md)
         - [部署一个智能合约](zh-cn/appchain/get-started/smart-contract.md)

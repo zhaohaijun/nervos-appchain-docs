@@ -1,13 +1,20 @@
 var common = {
-  name: 'nervos docs',
+  name: 'Nervos Network',
   repo: '',
   loadSidebar: true,
   autoHeader: true,
   subMaxLevel: 6,
   loadNavbar: true,
 
-  // basePath: './docs/',
-  basePath: 'https://raw.githubusercontent.com/'
+  logo:'/_media/nervos.png',
+
+  homepage: 'nervos.md',
+
+//   coverpage: true,
+//   coverpage: 'nervos.md',
+
+//   basePath: './docs/',
+  basePath: 'https://raw.githubusercontent.com/',
 
   //   alias: {
   //     '/.*/_sidebar.md': '/_sidebar.md',

@@ -1,6 +1,6 @@
-# Nervos AppChain {docsify-ignore-all}
+# AppChain {docsify-ignore-all}
 
-在这里我们会隆重的介绍一下AppChain。
+在这里我们会隆重的介绍一下Nervos AppChain。
 
 ## 在AppChain上开发DApp概述
 
