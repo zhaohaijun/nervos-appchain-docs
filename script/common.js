@@ -13,11 +13,11 @@ var common = {
 //   coverpage: true,
 //   coverpage: 'nervos.md',
 
-//   basePath: './docs/',
-  basePath: 'https://raw.githubusercontent.com/',
+  basePath: './docs/'
+//   basePath: 'https://raw.githubusercontent.com/',
 
-  //   alias: {
-  //     '/.*/_sidebar.md': '/_sidebar.md',
-  //     '/.*/__navbar.md_': '/__navbar.md_',
-  //   },
+    // alias: {
+    //   '/.*/_sidebar.md': '/_sidebar.md',
+    //   '/.*/__navbar.md_': '/__navbar.md_',
+    // }
 }
