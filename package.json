@@ -1,0 +1,12 @@
+{
+    "name": "nervos-appchain-docs",
+    "version": "1.0.0",
+    "main": "index.html",
+    "repository": "https://github.com/cryptape/nervos-appchain-docs",
+    "author": "Yao <GyonGyon@users.noreply.github.com>",
+    "license": "MIT",
+    "scripts": {
+        "update": "git submodule update && git submodule foreach git pull origin master --force && node ./Nervos-Docs-Docsify/tool/submodule.js",
+        "start": "docsify serve ./"
+    }
+}
