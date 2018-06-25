@@ -14,50 +14,20 @@
     <nav></nav>
     <div id="app">Loading</div>
     <script>
-        window.$docsify = {
-            name: 'Nervos Network',
-            repo: '',
-            loadSidebar: true,
-            autoHeader: true,
-            subMaxLevel: 6,
-            loadNavbar: true,
+        var customization = {
 
-            homepage: 'readme.md',
+            name: 'Nervos AppChain', // name of this document
 
-            basePath: './',
-
-            alias: {
-                '/.*/_sidebar.md': 'zh-CN/_sidebar.md',
-                '/.*/__navbar.md': 'zh-CN/__navbar.md',
-            },
-
-            search: 'auto',
-
-            search: {
-                maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-
-                // 支持本地化
-                placeholder: {
-                    // '/zh-CN/': '搜索',
-                    '/': 'Type to search',
-                },
-
-                // 支持本地化
-                noData: {
-                    // '/zh-CN/': '找不到结果',
-                    '/': 'No Results',
-                },
-
-                // 搜索标题的最大程级, 1 - 6
-                depth: 6,
-            }
+            homepage: 'zh-CN/get-started/intro.md',// the home page
         }
     </script>
+    <script src="//unpkg.com/lodash/lodash.min.js"></script>
+    <script src="https://rawgit.com/cryptape/Nervos-Docs/master/script/utils.js"></script>
+    <script src="https://rawgit.com/cryptape/Nervos-Docs/master/script/common-setting.js"></script>
+    <script src="https://rawgit.com/cryptape/Nervos-Docs/master/script/main.js"></script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
     <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
     <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
     <script src="https://unpkg.com/docsify-copy-code@2"></script>
-
 </body>
-
 </html>
