@@ -1,14 +1,20 @@
 - AppChain
     - 快速入门
-        - [AppChain 介绍](zh-cn/appchain/get-started/intro.md)
+        - [概览](zh-cn/appchain/get-started/intro.md)
+        - 执行环境
+            - [部署应用链]
+            - [华为云一键部署](zh-cn/appchain/environment/huawei.md)
+            - [在万云环境运行](zh-cn/appchain/environment/wanyun.md)
+            - [测试环境](zh-cn/appchain/environment/testnet.md)
         - [部署一个智能合约](zh-cn/appchain/get-started/smart-contract.md)
         - [完成一个DApp](zh-cn/appchain/get-started/dapp.md)
-    - [经济机制](zh-cn/appchain/economic-model.md)
     - 智能合约
         - [智能合约简介](zh-cn/appchain/smart-contract/intro.md)
         - [智能合约（Solidity）](zh-cn/appchain/smart-contract/solidity.md)
         - [智能合约（Rust）](zh-cn/appchain/smart-contract/rust.md)
+    - 进阶信息
+        - [经济模型](zh-cn/appchain/miscellaneous/economic-model.md)
+        - [治理模型](zh-cn/appchain/miscellaneous/governance-model.md)
+        - [多链与跨链](zh-cn/appchain/miscellaneous/cross-chain.md)
     - AppChain SDK
         - [SDK简介](zh-cn/appchain/sdk/intro.md)
-    - 相关信息
-        - [测试链相关信息](zh-cn/appchain/miscellaneous/testnet.md)
