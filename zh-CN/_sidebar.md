@@ -2,10 +2,10 @@
     - 快速入门
         - [概览](zh-cn/appchain/get-started/intro.md)
         - 执行环境
-            - [部署应用链]
+            - [测试链](zh-cn/appchain/environment/testnet.md) 
+            - [部署应用链]()
             - [华为云一键部署](zh-cn/appchain/environment/huawei.md)
             - [在万云环境运行](zh-cn/appchain/environment/wanyun.md)
-            - [测试环境](zh-cn/appchain/environment/testnet.md)
         - [部署一个智能合约](zh-cn/appchain/get-started/smart-contract.md)
         - [完成一个DApp](zh-cn/appchain/get-started/dapp.md)
     - 智能合约

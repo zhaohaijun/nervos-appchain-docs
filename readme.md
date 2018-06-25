@@ -1,10 +1,8 @@
-# 说明
+# Nervos AppChain Docs
 
-### 文件
+This is the documentent site for Nervos AppChain.
 
-readme 为首页
-_navbar, _sidebar 作用范围为改当前目录及子目录
+[Click here to enter the document.](#/zh-CN/get-started/intro.md)
 
-### 参数
-
-loadSidebar 决定是否启用 _sidebar
+## How to contribute?
+Please refer [this document]().

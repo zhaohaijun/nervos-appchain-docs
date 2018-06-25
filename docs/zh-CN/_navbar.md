@@ -1,6 +1,0 @@
-* [文档]()
-  * [AppChain](zh-cn/appchain/get-started/intro)
-  * [CITA](zh-cn/cita/cita/welcome)
-* [语言]()
-  * [English](/)
-  * [中文](/zh-cn/)
