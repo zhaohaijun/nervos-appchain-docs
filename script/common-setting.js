@@ -1,11 +1,11 @@
 var common = {
-    
+
     loadSidebar: true,
     autoHeader: true,
     subMaxLevel: 6,
-    loadNavbar: true,
+    // loadNavbar: true,
     basePath: './',
-    
+
     // search: 'auto',
 
     // configuration for searching plugin
