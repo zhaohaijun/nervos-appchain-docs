@@ -1,8 +1,10 @@
 # 部署一条 AppChain
 
 在开始正式开发AppChain DApp之前，我们需要先有一条AppChain。而这条开发用的AppChain可以通过以下方法获得：
-* 测试链
-* 
+* [测试链](#测试链)
+* [使用华为云一键云部署](#华为云一键部署操作指南)
+* 自己部署一条
+
 
 # 测试链
 
@@ -80,8 +82,3 @@ Eip_bandwidth为节点的带宽。
 
 [Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/OF-POewTOaUzEf-NakLuNg]
 密钥文件下载到本地。
-
-
-# 在万云上部署DApp
-
-万云介绍……
