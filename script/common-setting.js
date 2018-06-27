@@ -1,12 +1,22 @@
+// this file is NOT for customization
+// these are the default settings for all the Nervos Documents
+// you can overwrite settings in this page by set them again in customization.js
+
 var common = {
-    
+
     loadSidebar: true,
     autoHeader: true,
     subMaxLevel: 6,
     loadNavbar: true,
     basePath: './',
-    
+
     // search: 'auto',
+
+    // the default 
+    alias: {
+        '/_sidebar.md': `/${default_language}/_sidebar.md`,
+        '/_navbar.md': `/${default_language}/_navbar.md`,
+    },
 
     // configuration for searching plugin
     search: {

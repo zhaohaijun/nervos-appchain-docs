@@ -1,20 +1,15 @@
-- AppChain
-    - 快速入门
-        - [概览](zh-CN/get-started/intro.md)
-        - 执行环境
-            - [测试链](zh-CN/environment/testnet.md) 
-            - 部署应用链
-            - [华为云一键部署](zh-CN/environment/huawei.md)
-            - [在万云环境运行](zh-CN/environment/wanyun.md)
-        - [部署一个智能合约](zh-CN/get-started/smart-contract.md)
-        - [完成一个DApp](zh-CN/get-started/dapp.md)
-    - 智能合约
-        - [智能合约简介](zh-CN/smart-contract/intro.md)
-        - [智能合约（Solidity）](zh-CN/smart-contract/solidity.md)
-        - [智能合约（Rust）](zh-CN/smart-contract/rust.md)
-    - 进阶信息
-        - [经济模型](zh-CN/miscellaneous/economic-model.md)
-        - [治理模型](zh-CN/miscellaneous/governance-model.md)
-        - [多链与跨链](zh-CN/miscellaneous/cross-chain.md)
-    - AppChain SDK
-        - [SDK简介](zh-CN/sdk/intro.md)
+- 快速入门
+    - [概览](zh-CN/quick-start/intro.md)
+    - [部署一条 AppChain](zh-CN/quick-start/deploy-appchain.md)
+    - [实现一个智能合约](zh-CN/quick-start/deploy-smart-contract.md)
+    - [完成一个 DApp](zh-CN/quick-start/build-dapp.md)
+- 进阶信息
+    - [经济模型](zh-CN/miscellaneous/economic-model.md)
+    - [治理模型](zh-CN/miscellaneous/governance-model.md)
+    - [多链与跨链](zh-CN/miscellaneous/cross-chain.md)
+- 智能合约
+    - [智能合约简介](zh-CN/smart-contract/intro.md)
+    - [智能合约（Solidity）](zh-CN/smart-contract/solidity.md)
+    - [智能合约（Rust）](zh-CN/smart-contract/rust.md)
+- AppChain SDK
+    - [SDK简介](zh-CN/sdk/intro.md)

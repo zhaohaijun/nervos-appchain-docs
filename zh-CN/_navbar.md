@@ -6,4 +6,4 @@
 <!-- the above part should be indentical to https://raw.githubusercontent.com/cryptape/Nervos-Docs/master/_navbar.md -->
 * 语言
   * [English]()
-  * [中文](zh-CN/get-started/intro)
+  * [中文](zh-CN/quick-start/intro)
