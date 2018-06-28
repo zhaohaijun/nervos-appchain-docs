@@ -3,6 +3,7 @@
 在开始正式开发AppChain DApp之前，我们需要先有一条AppChain。而这条开发用的AppChain可以通过以下方法获得：
 * [测试链](#测试链)
 * [使用华为云一键云部署](#华为云一键部署操作指南)
+* [使用万云BaaS服务](#万云操作指引)
 * 自己部署一条
 
 
@@ -34,9 +35,11 @@ http://47.97.171.140:8090/ 打开浏览器后需要切换对应的AppChain服务
 
 **具体步骤为**
 
-1. 点击链接：在官网点击链接：….//todo
+1. 官网点击链接：
 
-[华为云部署入口（请预先登录）](_https://console.huaweicloud.com/aos/?region=cn-north-1#/app/demoTemplate/demoDetail?id=9a9d736e-851b-91d2-e06f-25269d9ffe2a_)
+https://console.huaweicloud.com/
+
+选择示例模板功能，搜索Nervos模板，并选择。
 
 ![step 1](../../../docs/_media/huawei/image01.png)
 
@@ -88,3 +91,31 @@ Eip_bandwidth为节点的带宽。
 ![step 9](../../../docs/_media/huawei/image09.png)
 密钥文件下载到本地。
 
+# 万云操作指引
+
+1. 打开万云主页：https://www.wancloud.io/
+
+并登陆（没有注册的用户需要先注册再登陆）。
+
+2. 在“极速万云”下拉菜单中，直接找到“Nervos AppChain” （或者，可以先点击“极速万云”，然后点击“公链”，然后找到Nervos AppChain）
+
+![step1](../../../docs/_media/wanyun/image01.png)
+
+3. 点击上一步中的“Nervos AppChain”，页面显示Nervos Appchain的介绍页面，如下：
+
+![step2](../../../docs/_media/wanyun/image02.png)
+
+其中接入地址即链的访问地址：http://nervosappchain-api.wancloud.io/， 端口号为默认值80
+
+接口调用举例说明：
+
+（查询有几个节点：）
+
+
+`$ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}' http://nervosappchain-api.wancloud.io/`
+
+其他命令请查看相关API文档 https://cryptape.github.io/cita/zh/usage-guide/rpc/
+
+4. 点击“本地搭建”或“相关文档”，页面显示相关文档，及组件的链接（即将上线）
+
+![step3](../../../docs/_media/wanyun/image03.png)

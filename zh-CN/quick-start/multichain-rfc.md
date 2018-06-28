@@ -45,23 +45,22 @@ Nervos区块链网络由任意多条分散运营的区块链构成，只有这�
 开发者制作DApp的H5 UI中，需要内嵌**manifest****文件**，以便告知本地钱包其访问区块链的情况和用到的数字资产情况。本地钱包将自动识别相应的数字资产，并将其加入资产列表中。
 
 ```
-`{
-``    "shortName": ``"Demo"``,
-    ``"name": ``"Cryptape DApp Demo"``,
-    ``"chainId": ``"1000"``,
-    ``"httpProvider": ``"http://47.97.108.229:1337"``,
-    ``"blockViewer": ``"https://etherscan.io/"``,
-    ``"networkId": ``"N/A"``,
-    ``"icon": ``"http://7xq40y.com1.z0.glb.clouddn.com/23.pic.jpg"``,
-    ``"entry": ``"index.html"``,
-    ``"provider": ``"Cryptaper"
-``}`
-```
+{
+    "shortName": "Demo",
+    "name": "Cryptape DApp Demo",
+    "chainId": "1000",
+    "httpProvider": "http://47.97.108.229:1337",
+    "blockViewer": "https://etherscan.io/",
+    "networkId": "N/A",
+    "icon": "http://7xq40y.com1.z0.glb.clouddn.com/23.pic.jpg",
+    "entry": "index.html",
+    "provider": "Cryptaper"
+}```
 
 其中，manifest文件的path应该在html中给出：
 
 ```
-`<link rel="manifest" href="/manifest.json">`
+<link rel="manifest" href="/manifest.json">
 ```
 
 ### Hub注册

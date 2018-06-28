@@ -7,7 +7,7 @@
 - 进阶信息
     - [经济模型](zh-CN/miscellaneous/economic-model.md)
     - [治理模型](zh-CN/miscellaneous/governance-model.md)
-    - [多链与跨链](zh-CN/miscellaneous/cross-chain.md)
+    - [跨链资产流转](zh-CN/miscellaneous/cross-chain.md)
 - 智能合约
     - [智能合约简介](zh-CN/smart-contract/intro.md)
     - [智能合约（Solidity）](zh-CN/smart-contract/solidity.md)
