@@ -11,116 +11,112 @@
 
 ### 引入 web3.js
 
-首先需要引入`web3.js`文件和 `bignumber.js`文件。
+在index.html中引入`bundle.js`,这里面包括了`web3.js`和相关依赖。`index.js`为调用web3的js脚本。
 ```
-<script type="text/javascript" src="js/bignumber.js"></script>
-<script type="text/javascript" src="js/web3-light.js"></script>
+<script src="./node_modules/@cita/web3/lib/bundle.js"></script>
+<script src="./index.js"></script>
 ```
 
 ### 设置参数
 
-给出必需的参数
+设置AppChain的地址。
 ```
-//params to send transaction
-const privkey = '352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f58007fa894214';
-const quota = 999999;
-
-//deployed contract address
-var contractAddress = "0xc83e7e875dc8f3d09ca1af863ae142697fc37398";
-
-//AppChain address
-var chainAddress = "http://47.75.129.215:1337";
-
-//abi for deployed contract
-var abi = [{
-        "constant": false,
-        "inputs": [],
-        "name": "getValue",
-        "outputs": [{
-            "name": "",
-            "type": "string"
-        }],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [{
-            "name": "str",
-            "type": "string"
-        }],
-        "name": "setValue",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }
-];
+const server = 'http://47.97.108.229:1337'
 ```
 
 ### 检测web3环境
 
 检测web3实例是否已经存在。一般来说，DApp浏览器环境（如Neuron）会给DApp应用注入web3实例，并提供交易签名等方法。所以我们在这里检测环境中是否已经有了实例，如果没有则自己构建；如果已经存在，则使用DApp浏览器的web3实例。
 ```
-// check first if the web3 is available
-if (typeof web3 !== 'undefined') {
-    web3 = new Web3(web3.currentProvider);
+if (typeof web3 !== 'undefined') {  
+    web3 = CITAWeb3(web3.currentProvider)
+    console.log('Web Injected')
+    div.innerHTML = 'Web Injected';
 } else {
-    // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.HttpProvider(chainAddress));
+    web3 = CITAWeb3(server)
+    console.log('Web3 Initialized')
+    div.innerHTML = 'Web Initialized';
 }
 ```
 
-### 实现合约方法
-实现getValue方法
+### 发送交易
+下面分别给出发送以太坊交易和发送AppChain交易的两种方法。
+
+#### 以太坊交易
+首先构造以太坊交易，然后调用`web3.eth.sendTransaction`。
 ```
-//get value from contract.
-function getValue() {
-    if (contractAddress != undefined && contractAddress != "default") {
-        var contract = web3.eth.contract(abi).at(contractAddress);
-        contract.getValue.call(
-            function (error, result) {
-                if (!error) {
-                    console.log("result from contract: " + result);
-                    document.getElementById("valueFromContract").value = result;
-                } else {
-                    console.error("Cannot get value. Error: " + error);
-                }
-            }
-        )
-    } else {
-        console.err("Failed to get value: conrtact address is not correct.");
-    }
+var tx_eth = {
+  "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
+  "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+  "gasLimit": "0x76c0", 
+  "gasPrice": "0x5AF3107A4", 
+  "value": "100000000000000000", 
+  "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8"
+}
+
+function sendETHTransaction() {
+  web3.eth.sendTransaction(tx_eth, function(err, res){
+    console.log(res)
+  })
 }
 ```
 
-实现setValue方法。`validUntilBlock`是一个CITA独有的，非常先进的东西，具体请参考[这篇文章]()。`setValidUntilBlock`方法是用来获得块高度并设置`validUntilBlock`的，它的实现在上面的示例源文件中可以找到。  
+#### AppChain 交易
+首先构造AppChain交易，然后调用`web3.eth.sendTransaction`。
 ```
-//set value from contract.
-function setValue() {
-    var valueToSet = document.getElementById("valueToContract").value;
-    initBlockNumber(web3, function (params) {
-        var commonParams = params
-        var contract = web3.eth.contract(abi).at(contractAddress);
+var tx_appchain = {
+  to: '0x2cc18375F32a98EfC017D1dDEBCEBD6F9Ee75152',
+  nonce: 100,
+  quota: 100,
+  data: '0x2cc18375F32a98EfC017D1dDEBCEBD6F9Ee75152',
+  value: "10000000000000000000",
+  chainId: 1,
+  version: 0
+}
 
-        var result = contract.setValue(
-            valueToSet, {
-                ...commonParams,
-                from: "0dbd369a741319fa5107733e2c9db9929093e3c7"
-            }
-        );
-        console.log("result of setValue " + result);
-    })
+function sendCITATransaction() {
+  web3.eth.sendTransaction(tx_appchain, function(err, res){
+    console.log(res)
+  })
+  
 }
 ```
 
-`DAPP` 发起交易并交由 `Neuron` 钱包的本地私钥签名，并最终由钱包将交易发至链上，发送交易的结果会通过以下三个回调方法通知 `DAPP` 。
+#### Neuron 回调
+`DAPP` 发起的交易并交由 `Neuron` 钱包的本地私钥签名，并最终由钱包将交易发至链上，发送交易的结果会通过以下三个回调方法通知 `DAPP` 。
 
 ```
 cancelled()                  // 交易取消
 onSignSuccessful(hexHash)    // 交易成功，并返回交易hash
 onSignFail(errMessage)       // 交易失败，并返回失败错误信息
+```
+
+例如：
+```
+function cancelled() {
+    console.log("transaction cancel");
+}
+
+function onSignSuccessful(hash) {
+    console.log("transaction hash: " + hash);
+}
+
+function onSignFail(err) {
+    console.log("transaction err: " + err);
+}
+```
+
+
+### 签名交易
+直接调用`signTransaction`来实现对某一笔交易的签名。
+```
+function signTransaction() {
+  web3.eth.signTransaction(tx_appchain, function(err, res) {
+    if (!err) {
+      console.log(res)
+    }
+  })
+}
 ```
 
 
@@ -131,6 +127,8 @@ onSignFail(errMessage)       // 交易失败，并返回失败错误信息
 python -m SimpleHTTPServer 3000
 ```
 
-查看一下自己本机的ip，并打开Neuron，在浏览器页面输入地址，如`http://192.168.2.239:3000`。这个
+查看一下自己本机的ip，并打开Neuron，在浏览器页面输入地址，如`http://192.168.2.239:3000`。
+
+在屏幕上点击相应按钮可以唤起本地的交易页面和交易签名页面。
 
 
