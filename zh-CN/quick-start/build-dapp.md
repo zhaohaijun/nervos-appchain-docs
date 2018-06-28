@@ -115,6 +115,14 @@ function setValue() {
 }
 ```
 
+`DAPP` 发起交易并交由 `Neuron` 钱包的本地私钥签名，并最终由钱包将交易发至链上，发送交易的结果会通过以下三个回调方法通知 `DAPP` 。
+
+```
+cancelled()                  // 交易取消
+onSignSuccessful(hexHash)    // 交易成功，并返回交易hash
+onSignFail(errMessage)       // 交易失败，并返回失败错误信息
+```
+
 
 ## 测试DApp
 我们可以通过使用python在本地启动一个简单的http服务，并使用Neuron来访问这个DApp。Python的安装请参照[Python网站](https://www.python.org/downloads/)。
