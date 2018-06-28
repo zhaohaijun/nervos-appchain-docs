@@ -72,9 +72,9 @@ solcjs --bin --abi HelloWorld.sol
 > * 使用你的私钥来对这个交易进行签名
 > * 将交易发送到运行区块链的节点，由该节点处理再广播到全网。  
 
-一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口]()，或使用将JSON-RPC封装后得到的[Nervos Web3 SDK]()。
+一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口]()，或使用将JSON-RPC封装后得到的[Nervos Web3 SDK]()。在示例代码里可以找到`deploy_contract.js`文件，使用它可以简单的完成合约的部署。
 
-首先设置参数
+打开`deploy_contract.js`，首先设置参数
 ```
 const NervosWeb3 = require('@nervos/web3');
 const SERVER = 'http://47.97.108.229:1337';
