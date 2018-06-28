@@ -2,6 +2,7 @@
     - [概览](zh-CN/quick-start/intro.md)
     - [部署一条 AppChain](zh-CN/quick-start/deploy-appchain.md)
     - [实现一个智能合约](zh-CN/quick-start/deploy-smart-contract.md)
+    - [多链协议](zh-CN/quick-start/multichain-rfc.md)
     - [完成一个 DApp](zh-CN/quick-start/build-dapp.md)
 - 进阶信息
     - [经济模型](zh-CN/miscellaneous/economic-model.md)
