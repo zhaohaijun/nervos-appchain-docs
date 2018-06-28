@@ -6,6 +6,12 @@ Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语�
 
 > 如果你想自己搭一条AppChain来测试合约，请参照[搭建一条AppChain]()。
 
+我们下面给出了一个完整的示例，衷心的希望通过这个示例，你能了解到合约和DApp的开发流程。
+
+```
+git clone https://github.com/Mine77/Nervos-web3-example.git
+```
+
 ## 编写智能合约
 我们下面给出一个简单的智能合约的示例
 ```
@@ -67,26 +73,25 @@ solcjs --bin --abi HelloWorld.sol
 > * 将交易发送到运行区块链的节点，由该节点处理再广播到全网。  
 
 一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口]()，或使用将JSON-RPC封装后得到的[Nervos Web3 SDK]()。
-下面的例子中我们使用SDK来完成合约部署。
 
+我们使用Java版的Nervos web3打包了一个小工具来帮助你部署合约，你可以在`java-deploy`目录下找到。
+
+首先打开`config.properties`，将之前得到的合约二进制码和abi填入，例如
 ```
-暂缺
+bin=60806040523480156100....
+abi=[{"constant":true,"inp....
 ```
-用之前的二进制码构造交易
+填入钱包私钥（关于如何获得钱包请查看[这里](zh-CN/quick-start/intro#获得一个钱包)），例如
 ```
-暂缺
+pk=0x6df169367e91caab0f63120aeb296fce34fd21e912312310cce3f5c8e47f
 ```
-用钱包私钥签名（关于如何获得钱包请查看[这里]()）
+运行脚本，完成部署
 ```
-暂缺
+java -jar contract_deploy.jar config.properties
 ```
-发送交易
+之后可以得到合约地址，例如
 ```
-暂缺
-```
-这时可以得到区块链给我们返回的交易哈希。等到链上交易生效后（AppChain一般三秒确认区块），使用该哈希去链上查询可得到合约地址。
-```
-暂缺
+Contract Address: 0x64bcf0e5ad70a8af6950fd8420e6eaf3a4481689
 ```
 我们将根据这个合约地址和ABI来调用合约。
 
