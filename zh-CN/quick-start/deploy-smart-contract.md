@@ -15,7 +15,7 @@ git clone https://github.com/Mine77/Nervos-web3-example.git
 ## 编写智能合约
 我们下面给出一个简单的智能合约的示例
 ```
-pragma solidity ^0.4.24;    //声明solidity的版本
+pragma solidity ^0.4.19;    //声明solidity的版本
 
 contract HelloWorld {       //创建一个合约
     address owner;
@@ -28,7 +28,7 @@ contract HelloWorld {       //创建一个合约
     }
 
     //实现一个获得value值的接口
-    function getValue () public view returns (string) {
+    function getValue () public constant returns (string) {
         return value;
     }
 
