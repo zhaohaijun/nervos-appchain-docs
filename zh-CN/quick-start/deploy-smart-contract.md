@@ -74,6 +74,7 @@ solcjs --bin --abi HelloWorld.sol
 
 一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口]()，或使用将JSON-RPC封装后得到的[Nervos Web3 SDK]()。
 
+### 使用Java版的SDK来部署合约
 我们使用Java版的Nervos web3打包了一个小工具来帮助你部署合约，你可以在`java-deploy`目录下找到。
 
 > 如果你的电脑没有java环境，你可能不是开发人员，找你们组开发人员布合约吧。
@@ -96,6 +97,8 @@ java -jar contract_deploy.jar config.properties
 Contract Address: 0x64bcf0e5ad70a8af6950fd8420e6eaf3a4481689
 ```
 我们将根据这个合约地址和ABI来调用合约。
+
+### 使用SDK版的JS来部署合约
 
 ---
 
