@@ -3,7 +3,7 @@
 在开始正式开发AppChain DApp之前，我们需要先有一条AppChain。而这条开发用的AppChain可以通过以下方法获得：
 * [测试链](#测试链)
 * [使用华为云一键云部署](#华为云一键部署操作指南)
-* 自己部署一条
+* 自己部署一条
 
 
 # 测试链
@@ -12,6 +12,9 @@
 
 `47.94.105.230:1337`
 
+区块链浏览器部署在：
+
+http://47.97.171.140:8090/ 打开浏览器后需要切换对应的AppChain服务，点开右上角链信息按钮，找到“其他链”输入框，输入测试链的PRC地址切换。
 
 # 华为云一键部署操作指南
 
@@ -33,16 +36,18 @@
 
 1. 点击链接：在官网点击链接：….//todo
 
-[_https://console.huaweicloud.com/aos/?region=cn-north-1#/app/demoTemplate/demoDetail?id=9a9d736e-851b-91d2-e06f-25269d9ffe2a_](https://console.huaweicloud.com/aos/?region=cn-north-1)
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/pN3fU_0eUsSSAlLqEIM3GA]
+[华为云部署入口（请预先登录）](_https://console.huaweicloud.com/aos/?region=cn-north-1#/app/demoTemplate/demoDetail?id=9a9d736e-851b-91d2-e06f-25269d9ffe2a_)
+
+![step 1](../../../docs/_media/huawei/image01.png)
+
 2. 点击“创建堆栈”，
 
 其中，token_avatar为代币图标，应输入图标所在的url链接。
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/h5Az5oGmiWZ2qb9309Dk7w]
+![step 2](../../../docs/_media/huawei/image02.png)
 3. 点击下一步，
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/V6QtzK1GrsQvN5BB7FvPuw]
+![step 3](../../../docs/_media/huawei/image03.png)
 输入资源配置的相关参数。如下图：
 
 一个用户用同一个模板在一个区域（见下图第一个参数“集群可用区”）只能部署一个链。
@@ -63,22 +68,23 @@ Eip_bandwidth为节点的带宽。
 |3900	|4	|4	|8核16G	|20	|
 |15000	|4	|4	|32核64G	|100	|
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/ZzqWPT-KZUmn7yn1YF5E8A]
+![step 4](../../../docs/_media/huawei/image04.png)
 点击“下一步”。显示，
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/qVpGFN9nAxYDiQ4KVjS1gQ]
+![step 5](../../../docs/_media/huawei/image05.png)
 点击创建堆栈，页面显示创建进度，最后完成。
 
 生成sshkey的步骤为,返回到第一个页面，如下图，找到“这里”，并点击
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/9nCB7DUVxuzjBMpPvC1EHQ]
+![step 6](../../../docs/_media/huawei/image06.png)
 点击后显示：
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/0VPRCus0OHaIjqcUjlVaQQ]
+![step 7](../../../docs/_media/huawei/image07.png)
 点击“创建密钥对”，
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/o6D_OVGO3TKloNEEKHTPhg]
+![step 8](../../../docs/_media/huawei/image08.png)
 点击“确定”。
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/OF-POewTOaUzEf-NakLuNg]
+![step 9](../../../docs/_media/huawei/image09.png)
 密钥文件下载到本地。
+
