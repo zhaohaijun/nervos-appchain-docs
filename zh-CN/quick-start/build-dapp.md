@@ -19,7 +19,7 @@ Neuron作为一个钱包，是保存用户私钥的唯一场所。DApp在Neuron�
 在index.html中引入`bundle.js`,这里面包括了`web3.js`和相关依赖。`index.js`为调用web3的js脚本。
 ```
 <script src="./node_modules/@cita/web3/lib/bundle.js"></script>
-<script src="./index.js"></script>
+<script src="./index.js"></script>·
 ```
 
 ### 设置参数
@@ -45,28 +45,7 @@ if (typeof web3 !== 'undefined') {
 ```
 
 ### 发送交易
-下面分别给出发送以太坊交易和发送AppChain交易的两种方法。
 
-#### 以太坊交易
-首先构造以太坊交易，然后调用`web3.eth.sendTransaction`。
-```
-var tx_eth = {
-  "from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155",
-  "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-  "gasLimit": "0x76c0", 
-  "gasPrice": "0x5AF3107A4", 
-  "value": "100000000000000000", 
-  "data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8"
-}
-
-function sendETHTransaction() {
-  web3.eth.sendTransaction(tx_eth, function(err, res){
-    console.log(res)
-  })
-}
-```
-
-#### AppChain 交易
 首先构造AppChain交易，然后调用`web3.eth.sendTransaction`。
 ```
 var tx_appchain = {
@@ -112,6 +91,7 @@ function onSignFail(err) {
 ```
 
 
+
 ### 签名交易
 直接调用`signTransaction`来实现对某一笔交易的签名。
 ```
@@ -123,6 +103,11 @@ function signTransaction() {
   })
 }
 ```
+
+## 调用合约方法
+调用合约方法实际上也是向链上发送一笔交易。通过对交易信息的充分配置，我们可以使用与上面的例子同样的方法来实现合约方法的调用。
+
+
 
 
 ## 测试DApp
