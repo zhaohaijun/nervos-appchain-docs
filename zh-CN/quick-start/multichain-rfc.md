@@ -1,6 +1,6 @@
 # Nervos Multichain RFC
 
-draft v0.1
+**version: 0.1(draft)**
 
 ## 概述
 
@@ -42,9 +42,9 @@ Nervos区块链网络由任意多条分散运营的区块链构成，只有这�
 
 ### DApp UI与终端钱包握手
 
-开发者制作DApp的H5 UI中，需要内嵌**manifest****文件**，以便告知本地钱包其访问区块链的情况和用到的数字资产情况。本地钱包将自动识别相应的数字资产，并将其加入资产列表中。
+开发者制作DApp的H5 UI中，需要内嵌**manifest 文件**，以便告知本地钱包其访问区块链的情况和用到的数字资产情况。本地钱包将自动识别相应的数字资产，并将其加入资产列表中。
 
-```
+```json
 {
     "shortName": "Demo",
     "name": "Cryptape DApp Demo",
@@ -55,13 +55,24 @@ Nervos区块链网络由任意多条分散运营的区块链构成，只有这�
     "icon": "http://7xq40y.com1.z0.glb.clouddn.com/23.pic.jpg",
     "entry": "index.html",
     "provider": "Cryptaper"
-}```
+}
+```
 
 其中，manifest文件的path应该在html中给出：
 
-```
+```js
 <link rel="manifest" href="/manifest.json">
 ```
+
+### DApp调用SDK
+
+打开DApp页面后，Neruon会自动注入web3对象，DApp应该采用如下方法实现交易签名申请：
+
+```js
+nervos-web3.sendTransaction(transactionObject [, callback])
+```
+
+其中transactionObject中增加chainId对象，用户终端拦截调用请求后找到预先保存的chainId与httpProvider的关系，将签名后交易发送到对应的服务上。
 
 ### Hub注册
 
