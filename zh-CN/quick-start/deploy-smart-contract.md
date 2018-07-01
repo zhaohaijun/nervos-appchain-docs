@@ -93,31 +93,6 @@ contractAddress: '0x3cd5e37659be23016cbbfe3dc77e5838051b5e36',
 ```
 这个就是你的合约地址，接下来使用这个合约地址和ABI，你可以在Neuron实现对合约方法的调用。
 
-<!-- 
-### 使用Java版的SDK来部署合约
-我们使用Java版的Nervos web3打包了一个小工具来帮助你部署合约，你可以在`java-deploy`目录下找到。
-
-> 如果你的电脑没有java环境，你可能不是开发人员，找你们组开发人员布合约吧。
-
-首先打开`config.properties`，将之前得到的合约二进制码和abi填入，例如
-```
-bin=60806040523480156100....
-abi=[{"constant":true,"inp....
-```
-填入钱包私钥（关于如何获得钱包请查看[这里](zh-CN/quick-start/intro#获得一个钱包)），例如
-```
-pk=0x6df169367e91caab0f63120aeb296fce34fd21e912312310cce3f5c8e47f
-```
-运行脚本，完成部署
-```
-java -jar contract_deploy.jar config.properties
-```
-之后可以得到合约地址，例如
-```
-Contract Address: 0x64bcf0e5ad70a8af6950fd8420e6eaf3a4481689
-```
-我们将根据这个合约地址和ABI来调用合约。 -->
-
 ---
 
 到这里我们就已经在 AppChain 上成功部署了一个智能合约。你可以读取和修改它里面的变量，也可以进一步通过修改合约实现更加复杂的规则和运算等。  
