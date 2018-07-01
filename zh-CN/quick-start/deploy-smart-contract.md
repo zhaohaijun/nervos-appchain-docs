@@ -6,11 +6,7 @@ Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语�
 
 > 如果你想自己搭一条AppChain来测试合约，请参照[搭建一条AppChain]()。
 
-我们在下面的地址里给出了一个完整的示例，衷心的希望通过这个示例，你能了解到合约和DApp的开发流程。
-```
-https://github.com/cryptape/Nervos-AppChain-Docs/tree/master/appchain-example
-```
-
+我们给出了[一个简单的示例](https://github.com/cryptape/Nervos-AppChain-Docs/tree/master/appchain-example)，衷心的希望通过这个示例，你能了解到合约和DApp的开发流程。
 
 ## 编写智能合约
 我们下面给出一个简单的智能合约的示例
