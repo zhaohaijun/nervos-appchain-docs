@@ -1,12 +1,12 @@
 # web3-example
-This is a simple example for you to learn how to make a simple dapp on Neuron.
+This is a simple example for you to learn how to deploy a contract and make a simple dapp on Neuron.
 
 ## Dependency
 * [node](https://nodejs.org/en/download/package-manager/)
-* [Java](https://java.com/en/download/help/download_options.xml)
+* [python](https://www.python.org/downloads/)
 
-NPM is for install Nervos web3.js as well as dependencies.
-Java is for using our contract deployment tool.
+NPM is for install Nervos web3.js as well as all the other dependencies.
+Python is for starting a local server to test our example.
 
 ## Usage
 Clone the repo first
