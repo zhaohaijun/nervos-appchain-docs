@@ -3,7 +3,8 @@
 在开始正式开发AppChain DApp之前，我们需要先有一条AppChain。可以从以下方案中进行选择：
 * [测试链](#测试链)
 * [使用华为云一键云部署](#华为云一键部署操作指南)
-* 自己部署一条
+* [使用万云BaaS服务](#万云操作指引)
+* 自己部署一条
 
 
 # 测试链
@@ -12,6 +13,9 @@
 
 `47.94.105.230:1337`
 
+区块链浏览器部署在：
+
+http://47.97.171.140:8090/ 打开浏览器后需要切换对应的AppChain服务，点开右上角链信息按钮，找到“其他链”输入框，输入测试链的PRC地址切换。
 
 # 华为云一键部署操作指南
 
@@ -31,18 +35,22 @@
 
 **具体步骤为**
 
-1. 点击链接：在官网点击链接：….//todo
+1. 官网点击链接：
 
-[_https://console.huaweicloud.com/aos/?region=cn-north-1#/app/demoTemplate/demoDetail?id=9a9d736e-851b-91d2-e06f-25269d9ffe2a_](https://console.huaweicloud.com/aos/?region=cn-north-1)
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/pN3fU_0eUsSSAlLqEIM3GA]
+https://console.huaweicloud.com/
+
+选择示例模板功能，搜索Nervos模板，并选择。
+
+![step 1](../../../docs/_media/huawei/image01.png)
+
 2. 点击“创建堆栈”，
 
 其中，token_avatar为代币图标，应输入图标所在的url链接。
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/h5Az5oGmiWZ2qb9309Dk7w]
+![step 2](../../../docs/_media/huawei/image02.png)
 3. 点击下一步，
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/V6QtzK1GrsQvN5BB7FvPuw]
+![step 3](../../../docs/_media/huawei/image03.png)
 输入资源配置的相关参数。如下图：
 
 一个用户用同一个模板在一个区域（见下图第一个参数“集群可用区”）只能部署一个链。
@@ -63,22 +71,51 @@ Eip_bandwidth为节点的带宽。
 |3900	|4	|4	|8核16G	|20	|
 |15000	|4	|4	|32核64G	|100	|
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/ZzqWPT-KZUmn7yn1YF5E8A]
+![step 4](../../../docs/_media/huawei/image04.png)
 点击“下一步”。显示，
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/qVpGFN9nAxYDiQ4KVjS1gQ]
+![step 5](../../../docs/_media/huawei/image05.png)
 点击创建堆栈，页面显示创建进度，最后完成。
 
 生成sshkey的步骤为,返回到第一个页面，如下图，找到“这里”，并点击
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/9nCB7DUVxuzjBMpPvC1EHQ]
+![step 6](../../../docs/_media/huawei/image06.png)
 点击后显示：
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/0VPRCus0OHaIjqcUjlVaQQ]
+![step 7](../../../docs/_media/huawei/image07.png)
 点击“创建密钥对”，
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/o6D_OVGO3TKloNEEKHTPhg]
+![step 8](../../../docs/_media/huawei/image08.png)
 点击“确定”。
 
-[Image: https://cryptape.quip.com/-/blob/TQIAAAmwhfg/OF-POewTOaUzEf-NakLuNg]
+![step 9](../../../docs/_media/huawei/image09.png)
 密钥文件下载到本地。
+
+# 万云操作指引
+
+1. 打开万云主页：https://www.wancloud.io/
+
+并登陆（没有注册的用户需要先注册再登陆）。
+
+2. 在“极速万云”下拉菜单中，直接找到“Nervos AppChain” （或者，可以先点击“极速万云”，然后点击“公链”，然后找到Nervos AppChain）
+
+![step1](../../../docs/_media/wanyun/image01.png)
+
+3. 点击上一步中的“Nervos AppChain”，页面显示Nervos Appchain的介绍页面，如下：
+
+![step2](../../../docs/_media/wanyun/image02.png)
+
+其中接入地址即链的访问地址：http://nervosappchain-api.wancloud.io/， 端口号为默认值80
+
+接口调用举例说明：
+
+（查询有几个节点：）
+
+
+`$ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}' http://nervosappchain-api.wancloud.io/`
+
+其他命令请查看相关API文档 https://cryptape.github.io/cita/zh/usage-guide/rpc/
+
+4. 点击“本地搭建”或“相关文档”，页面显示相关文档，及组件的链接（即将上线）
+
+![step3](../../../docs/_media/wanyun/image03.png)
