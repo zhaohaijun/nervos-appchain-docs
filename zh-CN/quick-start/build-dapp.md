@@ -9,18 +9,6 @@
 我们已经为上一节中我们部署的智能合约开发了一个前端示例，通过这个示例你可以了解到如何使用Nervos Web3 SDK完成与AppChain的交互。
 完整的代码文件也可以在上一节中的代码包里找到。
 
-<<<<<<< HEAD
-=======
-## Neuron 机制
-Neuron作为一个钱包，是保存用户私钥的唯一场所。DApp在Neuron的浏览器中运行时，Neuron首先会给DApp页面注入web3示例。在DApp调用`sendTransaction`和`signTransaction`的时候，Neuron会将这两个个方法请求进行拦截，获取交易信息，并对交易进行签名，然后将签名后的交易发送到区块链上。在发送交易之后，Neuron会call页面的三个回调方法，[具体见下文](#Neuron 回调)。
-
-另外，因为种种原因，我们目前不兼容MetaMask，所以DApp的调试只能在手机端Neuron上进行。又因为我们的Neuron目前只有安卓版本，所以你们队如果都是iPhone的话，你们可能已经凉了。
-
-### 引入manifest.json
-
-详见：[Nervos Multichain RFC](/zh-CN/quick-start/multichain-rfc.md)
-
->>>>>>> 707e8397d3f1db3d40454ad3fffb328bf65a9043
 ### 引入 web3.js
 
 首先需要引入`web3.js`文件和 `bignumber.js`文件。

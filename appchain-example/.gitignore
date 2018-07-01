@@ -1,0 +1,4 @@
+.DS_Store
+manifest.example.json
+contract_deploy.example.js
+index.example.js
