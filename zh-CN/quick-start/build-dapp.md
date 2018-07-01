@@ -4,6 +4,9 @@
 
 本文档假设你已经有了一些简单的前端知识，包括基本的HTML和JavaScript。
 
+## 配置manifest.json
+在Neuron和AppChain上运行的DApp需要有一个manifest.json
+
 ## 示例代码
 
 我们已经为上一节中我们部署的智能合约开发了一个前端示例，通过这个示例你可以了解到如何使用Nervos Web3 SDK完成与AppChain的交互。
