@@ -12,8 +12,6 @@
     - [智能合约简介](zh-CN/smart-contract/intro.md)
     - [智能合约（Solidity）](zh-CN/smart-contract/solidity.md)
     - [智能合约（Rust）](zh-CN/smart-contract/rust.md)
-- AppChain SDK
-    - [SDK简介](zh-CN/sdk/intro.md)
 - Neuron
     - [Neuron简介](zh-CN/neuron/neuron-intro.md)
 - Microscope
