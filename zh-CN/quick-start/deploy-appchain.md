@@ -47,16 +47,16 @@ https://console.huaweicloud.com/
 
 选择示例模板功能，搜索Nervos模板，并选择。
 
-![step 1](../../../_media/huawei/image01.png)
+![step 1](../../_media/huawei/image01.png)
 
 2. 点击“创建堆栈”，
 
 其中，token_avatar为代币图标，应输入图标所在的url链接。
 
-![step 2](../../../_media/huawei/image02.png)
+![step 2](../../_media/huawei/image02.png)
 3. 点击下一步，
 
-![step 3](../../../_media/huawei/image03.png)
+![step 3](../../_media/huawei/image03.png)
 输入资源配置的相关参数。如下图：
 
 一个用户用同一个模板在一个区域（见下图第一个参数“集群可用区”）只能部署一个链。
@@ -77,24 +77,24 @@ Eip_bandwidth为节点的带宽。
 |3900	|4	|4	|8核16G	|20	|
 |15000	|4	|4	|32核64G	|100	|
 
-![step 4](../../../_media/huawei/image04.png)
+![step 4](../../_media/huawei/image04.png)
 点击“下一步”。显示，
 
-![step 5](../../../_media/huawei/image05.png)
+![step 5](../../_media/huawei/image05.png)
 点击创建堆栈，页面显示创建进度，最后完成。
 
 生成sshkey的步骤为,返回到第一个页面，如下图，找到“这里”，并点击
 
-![step 6](../../../_media/huawei/image06.png)
+![step 6](../../_media/huawei/image06.png)
 点击后显示：
 
-![step 7](../../../_media/huawei/image07.png)
+![step 7](../../_media/huawei/image07.png)
 点击“创建密钥对”，
 
-![step 8](../../../_media/huawei/image08.png)
+![step 8](../../_media/huawei/image08.png)
 点击“确定”。
 
-![step 9](../../../_media/huawei/image09.png)
+![step 9](../../_media/huawei/image09.png)
 密钥文件下载到本地。
 
 # 万云操作指引
@@ -105,11 +105,11 @@ Eip_bandwidth为节点的带宽。
 
 2. 在“极速万云”下拉菜单中，直接找到“Nervos AppChain” （或者，可以先点击“极速万云”，然后点击“公链”，然后找到Nervos AppChain）
 
-![step1](../../../_media/wanyun/image01.png)
+![step1](../../_media/wanyun/image01.png)
 
 3. 点击上一步中的“Nervos AppChain”，页面显示Nervos Appchain的介绍页面，如下：
 
-![step2](../../../_media/wanyun/image02.png)
+![step2](../../_media/wanyun/image02.png)
 
 其中接入地址即链的访问地址：http://nervosappchain-api.wancloud.io/， 端口号为默认值80
 
@@ -124,4 +124,4 @@ Eip_bandwidth为节点的带宽。
 
 4. 点击“本地搭建”或“相关文档”，页面显示相关文档，及组件的链接（即将上线）
 
-![step3](../../../_media/wanyun/image03.png)
+![step3](../../_media/wanyun/image03.png)
