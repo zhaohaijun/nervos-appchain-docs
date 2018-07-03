@@ -7,11 +7,10 @@ Rust原生智能合约目前需要与CITA源码工程一起编译、部署，尚
 
 ## 编写智能合约
 
-也许你已经熟悉了solidity的智能合约编写，本说明材料以[solidity智能合约](https://cryptape.github.io/cita/zh/usage-guide/smart-contract-guide/index.html)为样例，为你展现如何用Rust完成一个同样逻辑能力的原生合约，并进一步为您说明为何当前Rust语言需要如是实现。
+也许你已经熟悉了solidity的智能合约编写，本说明材料以solidity智能合约为样例，为你展现如何用Rust完成一个同样逻辑能力的原生合约，并进一步为您说明为何当前Rust语言需要如是实现。
 
 ```
 pragma solidity ^0.4.19;
-
 
 contract HelloWorld {
     uint public balance;
@@ -202,7 +201,7 @@ cp $CITA_SRC_PATH/target/debug/cita-executor $CITA_SRC_PATH/target/install/bin/
 
 ## 调用合约
 
-同样通过发交易来调用合约中的`update`函数，通过[JSON-RPC](https://cryptape.github.io/cita/zh/usage-guide/rpc/index.html#eth_call)的`eth_call`方法来验证`balance`
+同样通过发交易来调用合约中的`update`函数，通过[JSON-RPC](https://docs.nervos.org/cita/#/zh-CN/latest/rpc_guide/rpc?id=call)的`eth_call`方法来验证`balance`
 的值。
 
 ### i.  查询balance
@@ -210,7 +209,7 @@ cp $CITA_SRC_PATH/target/debug/cita-executor $CITA_SRC_PATH/target/install/bin/
 **执行：**
 
 ```
-`curl -X POST —data '{"jsonrpc":"2.0","method":"eth_call", "params":[{"to":"0x0000000000000000000000000000000000000400", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337`
+`curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x0000000000000000000000000000000000000400", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337`
 ```
 
 关键信息简释：
@@ -274,7 +273,7 @@ python3 get_receipt.py
 ### V. 再查询BALANCE
 
 ```
-curl -X POST —data '{"jsonrpc":"2.0","method":"eth_call", "params":[{"to":"0x0000000000000000000000000000000000000400", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337
+curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x0000000000000000000000000000000000000400", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337
 ```
 
 返回：
@@ -290,5 +289,5 @@ curl -X POST —data '{"jsonrpc":"2.0","method":"eth_call", "params":[{"to":"0x0
 
 能够读到这里，说明你非常有耐心与诚意，是真的想学习并尝试一下Rust原生智能合约。为了表示我的诚意，特附两个已经写好的合约示例代码，你只需将它们放到$CITA_SRC_PATH/cita-executor/core/src/native下，就能尝试上面的所有执行步骤。Enjoy yourself!
 
-[my_contract.rs](https://quip.com/2/blob/BVZAAAc8xmC/SajO45_I-y0iKe6Yd6Fjaw?s=4lerAHdEOfNk&name=my_contract.rs) [mod.rs](https://quip.com/2/blob/BVZAAAc8xmC/tycYBcjEbO6oERfVq-D_xA?s=4lerAHdEOfNk&name=mod.rs)
+[my_contract.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/my_contract.rs) [mod.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/mod.rs)
 
