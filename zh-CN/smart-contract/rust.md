@@ -289,5 +289,5 @@ curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x00000
 
 能够读到这里，说明你非常有耐心与诚意，是真的想学习并尝试一下Rust原生智能合约。为了表示我的诚意，特附两个已经写好的合约示例代码，你只需将它们放到$CITA_SRC_PATH/cita-executor/core/src/native下，就能尝试上面的所有执行步骤。Enjoy yourself!
 
-[my_contract.rs](https://quip.com/2/blob/BVZAAAc8xmC/SajO45_I-y0iKe6Yd6Fjaw?s=4lerAHdEOfNk&name=my_contract.rs) [mod.rs](https://quip.com/2/blob/BVZAAAc8xmC/tycYBcjEbO6oERfVq-D_xA?s=4lerAHdEOfNk&name=mod.rs)
+[my_contract.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/my_contract.rs) [mod.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/mod.rs)
 
