@@ -5,4 +5,4 @@
 const default_language = 'zh-CN';
 
 //github url for enabling Edit on GitHub
-const github_url = 'https://github.com/cryptape/Nervos-AppChain-Docs/';
+const github_url = 'https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/';
