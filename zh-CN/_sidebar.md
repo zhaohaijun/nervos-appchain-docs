@@ -6,7 +6,7 @@
 - 进阶信息
     - [经济模型](zh-CN/miscellaneous/economic-model.md)
     - [治理模型](zh-CN/miscellaneous/governance-model.md)
-    - [多链协议](zh-CN/quick-start/multichain-rfc.md)
+    - [多链协议](zh-CN/miscellaneous/multichain-rfc.md)
     - [跨链资产流转](zh-CN/miscellaneous/cross-chain.md)
 - 智能合约
     - [智能合约简介](zh-CN/smart-contract/intro.md)
