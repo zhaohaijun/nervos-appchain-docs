@@ -102,7 +102,7 @@ impl HelloWorld {
 
     fn update(&mut self, params: ActionParams, ext: &mut Ext) -> Result<GasLeft, evm::Error> {
         self.output.resize(32, 0);
-        
+
         // 从params获取update的参数
         let amount = U256::from(
             params
@@ -113,7 +113,7 @@ impl HelloWorld {
         );
         let _balance = self.balance.get(ext)?.saturating_add(amount);
         self.balance.set(ext, _balance)?;
-        
+
         _balance.to_big_endian(self.output.as_mut_slice());
         Ok(GasLeft::NeedsReturn {
             gas_left: U256::from(100),
@@ -125,7 +125,7 @@ impl HelloWorld {
 ```
 
 **a. 获得参数amount**
-update方法中的参数amount需要从params中解析，取的是参数据4..36字节。那么，params是何方神圣？它其实是你在make_tx时传入的`--code "aa91543e0000000000000000000000000000000000000400"`值（详见下文的构造交易），聪明的你，相信很清楚地知道4..36字节表示的是什么！
+update方法中的参数amount需要从params中解析，取的是参数据4..36字节。那么，params是何方神圣？它其实是你在make_tx时传入的`--code "aa91543e0000000000000000000000000000000000000500"`值（详见下文的构造交易），聪明的你，相信很清楚地知道4..36字节表示的是什么！
 
 ```
        let amount = U256::from(
@@ -158,10 +158,9 @@ update方法中的参数amount需要从params中解析，取的是参数据4..36
 
 ## 编写合约部署
 
-Rust原生合约当前是随CITA启动直接启动的，并不像部署solidity需要发送交易来部署合约。这里需要在CITA mod.rs（$CITA_SRC_PATH/cita-executor/core/src/native，其中CITA_SRC_PATH为cita的源码根目录）中的加入合约的注册代码便可。
+Rust原生合约当前是随CITA启动直接启动的，并不像部署solidity需要发送交易来部署合约。这里需要在CITA factory.rs（$CITA_SRC_PATH/cita-executor/core/src/native，其中CITA_SRC_PATH为cita的源码根目录）中的加入合约的注册代码便可。
 
 ```
-mod myContract;
 ...
 impl Default for Factory {
     fn default() -> Self {
@@ -169,14 +168,26 @@ impl Default for Factory {
             contracts: HashMap::new(),
         };
 
+        // here we register contracts with addresses defined in genesis.json.
         {
-            use self::myContract::HelloWorld;
-            factory.register(Address::from(0x400), Box::new(HelloWorld::default()));
+            use native::myContract::HelloWorld;
+            factory.register(Address::from(0x500), Box::new(HelloWorld::default()));
         }
-
+        ...
         factory
     }
 }
+```
+
+同时还需要在同目录下的代码mod.rs中加入my_contract的模块，使得rust在编译时，可以正确编译my_contract.rs.
+
+```
+...
+pub mod factory;
+pub mod myContract;
+#[cfg(test)]
+mod tests;
+...
 ```
 
 ## 编译合约
@@ -209,7 +220,7 @@ cp $CITA_SRC_PATH/target/debug/cita-executor $CITA_SRC_PATH/target/install/bin/
 **执行：**
 
 ```
-`curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x0000000000000000000000000000000000000400", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337`
+`curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x0000000000000000000000000000000000000500", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337`
 ```
 
 关键信息简释：
@@ -225,7 +236,7 @@ cp $CITA_SRC_PATH/target/debug/cita-executor $CITA_SRC_PATH/target/install/bin/
 ### II. 构造交易
 
 ```
-python3 make_tx.py —to "0x0000000000000000000000000000000000000400" —code "aa91543e0000000000000000000000000000000000000000000000000000000000000011"
+python3 make_tx.py —to "0x0000000000000000000000000000000000000500" —code "aa91543e0000000000000000000000000000000000000000000000000000000000000011"
 ```
 
 关键信息简释：
@@ -273,7 +284,7 @@ python3 get_receipt.py
 ### V. 再查询BALANCE
 
 ```
-curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x0000000000000000000000000000000000000400", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337
+curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x0000000000000000000000000000000000000500", "data":"0x832b4580"}, "latest"],"id":2}' 127.0.0.1:1337
 ```
 
 返回：
@@ -289,5 +300,4 @@ curl -X POST —data '{"jsonrpc":"2.0","method":"call", "params":[{"to":"0x00000
 
 能够读到这里，说明你非常有耐心与诚意，是真的想学习并尝试一下Rust原生智能合约。为了表示我的诚意，特附两个已经写好的合约示例代码，你只需将它们放到$CITA_SRC_PATH/cita-executor/core/src/native下，就能尝试上面的所有执行步骤。Enjoy yourself!
 
-[my_contract.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/my_contract.rs) [mod.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/mod.rs)
-
+[my_contract.rs](https://github.com/cryptape/Nervos-AppChain-Docs/blob/master/examples/rust-contract/my_contract.rs)
