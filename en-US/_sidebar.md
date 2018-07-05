@@ -1,4 +1,4 @@
-- 快速入门 
+- Getting Started 
     - [概览](zh-CN/quick-start/intro.md)
     - [部署一条 AppChain](zh-CN/quick-start/deploy-appchain.md)
     - [实现一个智能合约](zh-CN/quick-start/deploy-smart-contract.md)
