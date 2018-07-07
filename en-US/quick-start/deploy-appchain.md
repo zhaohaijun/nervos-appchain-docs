@@ -113,7 +113,7 @@ Eip_bandwidth为节点的带宽。
 
 `$ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":74}' http://nervosappchain-api.wancloud.io/`
 
-其他命令请查看相关API文档 https://cryptape.github.io/cita/zh/usage-guide/rpc/
+其他命令请查看[相关API文档](https://docs.nervos.org/cita/#/zh-CN/latest/rpc_guide/rpc)
 
 4. 点击“本地搭建”或“相关文档”，页面显示相关文档，及组件的链接（即将上线）
 
