@@ -103,7 +103,7 @@ function getValue() {
 }
 ```
 
-实现setValue方法。`validUntilBlock`是一个CITA独有的，非常先进的东西，具体请参考[这篇文章]()。`setValidUntilBlock`方法是用来获得块高度并设置`validUntilBlock`的，它的实现在上面的示例源文件中可以找到。  
+实现setValue方法。`validUntilBlock`是一个CITA独有的，非常先进的东西，具体请参考[这篇文章](https://docs.nervos.org/cita/#/zh-CN/latest/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84valid_until_block%E6%98%AF%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F)。`setValidUntilBlock`方法是用来获得块高度并设置`validUntilBlock`的，它的实现在上面的示例源文件中可以找到。  
 ```
 //set value from contract.
 function setValue() {

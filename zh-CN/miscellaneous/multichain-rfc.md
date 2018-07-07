@@ -49,7 +49,7 @@ Nervos区块链网络由任意多条分散运营的区块链构成，只有这�
     "shortName": "Demo",
     "name": "Cryptape DApp Demo",
     "chainId": "1000",
-    "httpProvider": "http://47.97.108.229:1337",
+    "httpProvider": "http://127.0.0.1:1337",
     "blockViewer": "https://etherscan.io/",
     "networkId": "N/A",
     "icon": "http://7xq40y.com1.z0.glb.clouddn.com/23.pic.jpg",

@@ -1,8 +1,8 @@
 # 部署一个智能合约
 
-Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语言](http://solidity.readthedocs.io/en/latest/)来开发智能合约，以及相关的开发工具。除此之外，AppChain 还支持使用Go语言和Rust语言来开发智能合约，详情请参照[智能合约开发文档](zh-CN/smart-contract/intro.md)。
+Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语言](http://solidity.readthedocs.io/en/latest/)来开发智能合约，以及相关的开发工具。除此之外，AppChain 还支持使用Go语言和Rust语言来开发智能合约，详情请参照[智能合约开发文档](smart-contract/intro.md)。
 
-这篇文档将会带你使用Solidity完成一个智能合约，并将它部署到我们的[XXX测试链](zh-CN/quick-start/deploy-appchain.md#测试链)上。
+这篇文档将会带你使用Solidity完成一个智能合约，并将它部署到我们的[XXX测试链](quick-start/deploy-appchain.md#测试链)上。
 
 > 如果你想自己搭一条AppChain来测试合约，请参照[搭建一条AppChain]()。
 
@@ -67,7 +67,7 @@ solcjs --bin --abi HelloWorld.sol
 > * 使用你的私钥来对这个交易进行签名
 > * 将交易发送到运行区块链的节点，由该节点处理再广播到全网。  
 
-一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口]()，或使用将JSON-RPC封装后得到的[Nervos Web3 SDK]()。下面我们使用SDK的方法部署合约
+一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口](https://docs.nervos.org/cita/#/zh-CN/latest/rpc_guide/rpc)，或使用将JSON-RPC封装后得到的Nervos Web3 SDK。下面我们使用SDK的方法部署合约
 
 打开`deploy_contract.js`，首先设置参数
 ```
@@ -93,4 +93,4 @@ contractAddress: '0x3cd5e37659be23016cbbfe3dc77e5838051b5e36',
 到这里我们就已经在 AppChain 上成功部署了一个智能合约。你可以读取和修改它里面的变量，也可以进一步通过修改合约实现更加复杂的规则和运算等。  
 > 这看起来与普通服务器一样，但其实略有不同：这个世界上将不会有任何人有办法来修改你的这份合约，包括你自己（但你可以对合约进行升级）；任何人都可以看到你的这份合约的内容，也可以使用你的这份合约，包括它里面存储的数据，除非你另外进行限制。
 
-更多关于智能合约的信息请参考[智能合约文档](/zh-CN/smart-contract/intro.md)。
+更多关于智能合约的信息请参考[智能合约文档](smart-contract/intro.md)。
