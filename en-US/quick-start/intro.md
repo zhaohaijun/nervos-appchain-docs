@@ -6,7 +6,7 @@
 
 Nervos AppChain主要由三个**完整开源**的子产品构成：高性能区块链内核「CITA」，区块链浏览器「Microscope」，手机钱包和DApp终端「Neuron」。
 
-「*CITA*」（Cryptape Inter-enterprise Trust Automation）是Cryptape的工程团队基于多年的区块链技术积累所开发的一个开源区块链内核，使用CITA可以快速的搭建一个区块链基础网络。
+[「*CITA*」](https://cryptape.github.io/cita/#/)（Cryptape Inter-enterprise Trust Automation）是Cryptape的工程团队基于多年的区块链技术积累所开发的一个开源区块链内核，使用CITA可以快速的搭建一个区块链基础网络。
 
 [「*Microscope*」](https://cryptape.github.io/Microscope/#/)是一个面向AppChian的区块链浏览器，它可以用于浏览基于AppChian所搭建的区块链的区块、交易和合约。Microscope 完全开源并提供开发者支持，所以用户也可以基于 Microscope 定制自己的区块链浏览器。
 
@@ -40,4 +40,4 @@ AppChain提供一个数据缓存层组件，用来将区块链上开发者感兴
     AppChain 上的钱包与以太坊钱包规则一致，可以直接使用以太坊钱包的地址和私钥。
 * 使用手机钱包Neuron生成一个钱包
 * 使用SDK生成一个钱包
-* 使用[CITA-cli工具](https://github.com/driftluo/cita-cli)生成一个钱包
+* 使用[CITA-cli工具](https://github.com/cryptape/cita-cli)生成一个钱包
