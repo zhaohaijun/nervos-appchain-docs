@@ -6,7 +6,7 @@ var customization = {
 
     name: 'Nervos AppChain', // name of this document
 
-    subMaxLevel: 2,
+    homepage: '/quick-start/intro.md',// the home page, extension name '.md' cannot be omitted.
 
-    homepage: `${default_language}/quick-start/intro.md`,// the home page, extension name '.md' cannot be omitted.
+    
 }

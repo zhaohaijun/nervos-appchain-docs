@@ -4,6 +4,11 @@
 
 本文档假设你已经有了一些简单的前端知识，包括基本的HTML和JavaScript。
 
+[test button](./smart-contract/intro ':ignore')
+
+
+[test button](../smart-contract/intro)
+
 ## 配置manifest.json
 在Neuron和AppChain上运行的DApp需要有一个manifest.json
 

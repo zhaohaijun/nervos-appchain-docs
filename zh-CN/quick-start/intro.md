@@ -38,4 +38,4 @@ AppChain提供一个数据缓存层组件，用来将区块链上开发者感兴
 AppChain 上的钱包与以太坊钱包规则一致，可以直接使用以太坊钱包的地址和私钥。
 * 使用手机钱包Neuron生成一个钱包
 * 使用SDK生成一个钱包
-* 使用[CITA-cli工具](https://github.com/driftluo/cita-cli)生成一个钱包
+* 使用[CITA-cli工具](https://github.com/cryptape/cita-cli)生成一个钱包
