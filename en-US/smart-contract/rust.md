@@ -193,7 +193,7 @@ Rust原生合约当前是随CITA启动直接启动的，并不像部署solidity�
 
 ## 调用合约
 
-同样通过发交易来调用合约中的`update`函数，通过[JSON-RPC](https://docs.nervos.org/cita/#/zh-CN/latest/rpc_guide/rpc?id=call)的`eth_call`方法来验证`balance` 的值。
+同样通过发交易来调用合约中的`update`函数，通过[JSON-RPC](https://docs.nervos.org/cita/#/zh-CN/latest/rpc_guide/rpc)的`eth_call`方法来验证`balance` 的值。
 
 ### i. 查询balance
 
