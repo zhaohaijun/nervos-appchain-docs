@@ -2,7 +2,7 @@
 
 Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语言](http://solidity.readthedocs.io/en/latest/)来开发智能合约，以及相关的开发工具。除此之外，AppChain 还支持使用Go语言和Rust语言来开发智能合约，详情请参照[智能合约开发文档](smart-contract/intro.md)。
 
-这篇文档将会带你使用Solidity完成一个智能合约，并将它部署到我们的[XXX测试链](quick-start/deploy-appchain.md#测试链)上。
+这篇文档将会带你使用Solidity完成一个智能合约，并将它部署到我们的[测试链](quick-start/deploy-appchain.md#测试链)上。
 
 > 如果你想自己搭一条AppChain来测试合约，请参照[搭建一条AppChain]()。
 
