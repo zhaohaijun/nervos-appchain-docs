@@ -25,14 +25,14 @@
 给出必需的参数
 ```
 //params to send transaction
-const privkey = '352416e1c910e413768c51390dfd791b414212b7b4fe6b1a18f58007fa894214';
+const privkey = 'YOUR-PRIVATE-KEY';
 const quota = 999999;
 
 //deployed contract address
-var contractAddress = "0xc83e7e875dc8f3d09ca1af863ae142697fc37398";
+var contractAddress = "CONTRACT-ADDRESS";
 
 //AppChain address
-var chainAddress = "http://47.75.129.215:1337";
+var chainAddress = "BLOCKCHAIN-HOST-ADDRESS";
 
 //abi for deployed contract
 var abi = [{
