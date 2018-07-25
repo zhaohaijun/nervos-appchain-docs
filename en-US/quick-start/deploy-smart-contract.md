@@ -4,9 +4,9 @@ Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语�
 
 这篇文档将会带你使用Solidity完成一个智能合约，并将它部署到我们的[测试链](quick-start/deploy-appchain.md#测试链)上。
 
-> 如果你想自己搭一条AppChain来测试合约，请参照[搭建一条AppChain]()。
+> 如果你想自己搭一条AppChain来测试合约，请参照[搭建一条AppChain](https://docs.nervos.org/Nervos-AppChain-Docs/#/quick-start/deploy-appchain)。
 
-我们给出了[一个简单的示例](https://github.com/cryptape/Nervos-AppChain-Docs/tree/master/appchain-example)，衷心的希望通过这个示例，你能了解到合约和DApp的开发流程。
+我们给出了[一个简单的示例](https://github.com/cryptape/Nervos-AppChain-Docs/tree/master/examples/appchain-example)，衷心的希望通过这个示例，你能了解到合约和DApp的开发流程。
 
 ## 编写智能合约
 
@@ -39,7 +39,7 @@ Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语�
 
 将上面的代码存为一个`HelloWorld.sol`文件。
 
-上面的这个合约实现了最简单的功能，即使用一个字符串变量来存储一段字符串"Hello World!"，并实现了两个接口来读取和更改这个变量。在[完成一个DApp]()文档中，我们将给出如何在你的前端代码里调用合约的办法。
+上面的这个合约实现了最简单的功能，即使用一个字符串变量来存储一段字符串"Hello World!"，并实现了两个接口来读取和更改这个变量。在[完成一个DApp](https://docs.nervos.org/Nervos-AppChain-Docs/#/quick-start/build-dapp)文档中，我们将给出如何在你的前端代码里调用合约的办法。
 
 ## 安装Solidity编译器
 
@@ -70,7 +70,7 @@ Nervos AppChain 完全支持以太坊的开发生态，包括使用[Solidity语�
 
 > 部署合约的过程实际上分为下面几个步骤： * 将上面得到的二进制码和ABI作为交易的信息来构造一个区块链交易 * 使用你的私钥来对这个交易进行签名 * 将交易发送到运行区块链的节点，由该节点处理再广播到全网。
 
-一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口](https://docs.nervos.org/cita/#/zh-CN/latest/rpc_guide/rpc)，或使用将JSON-RPC封装后得到的Nervos Web3 SDK。下面我们使用SDK的方法部署合约
+一般来说我们有两种方式来与AppChain交互：使用[Json-RPC接口](https://docs.nervos.org/cita/#/rpc_guide/rpc)，或使用将JSON-RPC封装后得到的Nervos Web3 SDK。下面我们使用SDK的方法部署合约
 
 打开`deploy_contract.js`，首先设置参数
 
