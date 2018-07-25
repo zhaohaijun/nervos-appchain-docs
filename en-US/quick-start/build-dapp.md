@@ -1,6 +1,6 @@
 # 完成一个DApp
 
-这个将部分带你完成一个DApp，并让它运行在我们的手机钱包Neuron上。
+本文档将带你完成一个DApp，并让它运行在我们的手机钱包Neuron上。
 
 本文档假设你已经有了一些简单的前端知识，包括基本的HTML和JavaScript。
 
@@ -10,7 +10,7 @@
 
 ## 示例代码
 
-我们已经为上一节中我们部署的智能合约开发了一个前端示例，通过这个示例你可以了解到如何使用Nervos Web3 SDK完成与AppChain的交互。 完整的代码文件也可以在上一节中的代码包里找到。
+我们已经为上一节中部署的智能合约开发了一个前端示例，通过这个示例你可以了解到如何使用Nervos Web3 SDK完成与AppChain的交互。 完整的代码文件也可以在上一节中的代码包里找到。
 
 ### 引入 web3.js
 
@@ -99,7 +99,7 @@
     }
     
 
-实现setValue方法。`validUntilBlock`是一个CITA独有的，非常先进的东西，具体请参考[这篇文章](https://docs.nervos.org/cita/#/zh-CN/latest/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84valid_until_block%E6%98%AF%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F)。`setValidUntilBlock`方法是用来获得块高度并设置`validUntilBlock`的，它的实现在上面的示例源文件中可以找到。
+实现setValue方法。`validUntilBlock`是一个CITA独有的，非常先进的东西，具体请参考[CITA-FAQ](https://docs.nervos.org/cita/#/reference/faq)。`setValidUntilBlock`方法是用来获得块高度并设置`validUntilBlock`的，它的实现在上面的示例源文件中可以找到。
 
     //set value from contract.
     function setValue() {
@@ -133,4 +133,4 @@
     python -m SimpleHTTPServer 3000
     
 
-查看一下自己本机的ip，并打开Neuron，在浏览器页面输入地址，如`http://192.168.2.239:3000`。这个
+查看自己本机的ip，并打开Neuron，在浏览器页面输入地址，如`http://192.168.2.239:3000`。
