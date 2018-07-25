@@ -4,7 +4,7 @@
 * [测试链](#测试链)
 * [使用华为云一键云部署](#华为云一键部署操作指南)
 * [使用万云BaaS服务](#万云操作指引)
-* 自行部署
+* [自行部署](https://docs.nervos.org/cita/#/chain/getting_started)
 
 
 # 测试链
