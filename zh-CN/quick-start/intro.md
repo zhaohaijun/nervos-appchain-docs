@@ -2,15 +2,15 @@
 
 ## 应用链解决方案
 
-「Nervos AppChain」是一套开源的**应用公链**解决方案。它主要为B端用户解决「搭建区块链困难」和「开发区块链应用困难」这两个问题。我们在市场痛点调研中发现，很多行业或企业联盟有商业资源，具备一定传统应用系统的开发能力，也有意愿搭建一条自己的区块链，但当前市场并没有一个完整的的技术方案来支撑开发。同时，许多的应用开发者们想要开发一些酷炫的区块链应用，但他们常常被以太坊的低性能所拖累。而我们尝试通过推出一套产品，即Nervos AppChain，来解决这个问题。
+「Nervos AppChain」是一套开源的**应用公链**解决方案。它主要为B端用户解决「搭建区块链困难」和「开发区块链应用困难」这两个问题。我们在市场痛点调研中发现，很多行业或企业联盟有商业资源，具备一定传统应用系统的开发能力，也有意愿搭建一条自己的区块链，但当前市场并没有一个完整的的技术方案来支撑开发。同时，许多的应用开发者们想要开发一些酷炫的区块链应用，但他们常常被以太坊的低性能所拖累。而我们尝试通过推出一套产品，即 Nervos AppChain，来解决这个问题。
 
 Nervos AppChain主要由三个**完整开源**的子产品构成：高性能区块链内核「CITA」，区块链浏览器「Microscope」，手机钱包和DApp终端「Neuron」。
 
 [「CITA」](https://cryptape.github.io/cita/#/)（Cryptape Inter-enterprise Trust Automation）是Cryptape的工程团队基于多年的区块链技术积累所开发的一个开源区块链内核，使用CITA可以快速搭建一个区块链基础网络。
 
-[「Microscope」](https://cryptape.github.io/Microscope/#/)是一个面向AppChian的区块链浏览器，它可以用于浏览基于AppChian所搭建的区块链的区块、交易和合约。Microscope 完全开源并提供开发者支持，所以用户也可以基于 Microscope 定制自己的区块链浏览器。
+[「Microscope」](https://cryptape.github.io/Microscope/#/)是一个面向 AppChain 的区块链浏览器，它可以用于浏览基于 AppChain 所搭建的区块链的区块、交易和合约。Microscope 完全开源并提供开发者支持，所以用户也可以基于 Microscope 定制自己的区块链浏览器。
 
-[「Neuron」](https://cryptape.github.io/Neuron-Android/#/)是一个开源的手机端**多链**钱包和DApp终端。它一方面为C端用户提供了使用DApp和管理钱包的服务，另一方面为B端的开发者们提供了一个发布DApp的平台。开发者在开发DApp时，可以选择基于HTML5开发DApp并发布到Neruon平台上，也可以自行定制Neuron，开发一个原生的DApp。Neuron 为用户提供 DApp 与合约调用间的无缝链接体验。类似于网页端的 MetaMask 和电脑端的 Mist。此外，使用 Neuron 访问以太坊DApp和Nervos AppChain DApp时，用户无需关心自己在哪条链上做业务。
+[「Neuron」](https://cryptape.github.io/Neuron-Android/#/)是一个开源的手机端**多链**钱包和 DApp 终端。它一方面为C端用户提供了使用DApp和管理钱包的服务，另一方面为B端的开发者们提供了一个发布 DApp 的平台。开发者在开发 DApp 时，可以选择基于 HTML5 开发 DApp 并发布到 Neruon 平台上，也可以自行定制Neuron，开发一个原生的DApp。Neuron 为用户提供 DApp 与合约调用间的无缝链接体验。类似于网页端的 MetaMask 和电脑端的 Mist。此外，使用 Neuron 访问以太坊 DApp 和 Nervos AppChain DApp 时，用户无需关心自己在哪条链上做业务。
 
 
 ## DApp解决方案
