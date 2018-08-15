@@ -4,7 +4,7 @@
 
 ## 概述
 
-Nervos区块链网络由任意多条分散运营的区块链构成，只有这些链符合相同的资源访问协议才能方便开发者和用户安全便捷地访问链上资源。
+Nervos Network由任意多条分散运营的区块链构成，只有这些链符合相同的资源访问协议才能方便开发者和用户安全便捷地访问链上资源。
 
 ## 角色
 
@@ -66,10 +66,10 @@ Nervos区块链网络由任意多条分散运营的区块链构成，只有这�
 
 ### DApp调用SDK
 
-打开DApp页面后，Neruon会自动注入web3对象，DApp应该采用如下方法实现交易签名申请：
+打开DApp页面后，Neruon会自动注入nervos.js对象，DApp应该采用如下方法实现交易签名申请：
 
 ```js
-nervos-web3.sendTransaction(transactionObject [, callback])
+nervos.js.sendTransaction(transactionObject [, callback])
 ```
 
 其中transactionObject中增加chainId对象，用户终端拦截调用请求后找到预先保存的chainId与httpProvider的关系，将签名后交易发送到对应的服务上。
@@ -82,7 +82,7 @@ nervos-web3.sendTransaction(transactionObject [, callback])
 
 1. 用户在终端钱包打开DApp网页；
 2. 终端钱包分析HTML文件，找到manifest文件并解析；
-3. 终端钱包为网页注入web3对象；
-4. DApp网页调用web3.sendTransaction函数唤起终端钱包签名；
+3. 终端钱包为网页注入nervos.js对象；
+4. DApp网页调用nervos.js.sendTransaction函数唤起终端钱包签名；
 5. 用户确认签名；
 6. 终端钱包将签名结果返回DApp网页，同时将签名内容发送到manifest指示的httpProvider接口
