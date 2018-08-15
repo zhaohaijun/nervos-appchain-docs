@@ -1,5 +1,5 @@
+- [Nervos AppChain 概览](quick-start/intro.md)
 - 快速入门
-    - [概览](quick-start/intro.md)
     - [部署一条 AppChain](quick-start/deploy-appchain.md)
     - [实现一个智能合约](quick-start/deploy-smart-contract.md)
     - [完成一个 DApp](quick-start/build-dapp.md)
