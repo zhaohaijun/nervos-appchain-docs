@@ -25,7 +25,7 @@ node 4: 121.43.163.31:1340
 
 我们官方运行的区块链浏览器地址为：https://microscope.cryptape.com
 
-浏览器默认是从我们的测试链上获取数据，如果想要切换到其他 AppChain 上，可以点开右上角链信息按钮，找到“其他链”输入框，输入测试链的节点地址进行切换。
+浏览器默认是从我们的测试链上获取数据，如果想要切换到其他 AppChain 上，可以点击右上角"TEST-CHAIN"按钮，找到“其他链”输入框，输入测试链的节点地址进行切换。
 
 !> 如果链接的是链节点而不是对应的缓存服务器，Microscope 的部分功能无法使用。
 
@@ -129,7 +129,7 @@ Eip_bandwidth为节点的带宽。
 
 ![step2](../../_media/wanyun/image02.png)
 
-其中接入地址即链的访问地址：http://nervosappchain-api.wancloud.io/， 端口号为默认值80
+其中接入地址即链的访问地址：`http://nervosappchain-api.wancloud.io/`， 端口号为默认值80
 
 接口调用举例说明：
 
