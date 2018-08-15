@@ -8,11 +8,17 @@
 
 #### CITA | 区块链内核
 
+[![](https://img.shields.io/badge/CITA-Documents-green.svg)](https://cryptape.github.io/cita/)
+[![](https://img.shields.io/badge/CITA-GitHub-lightgrey.svg)](https://github.com/cryptape/cita)
+
 Nervos AppChain的核心组件是采用微服务架构的底层区块链内核CITA。作为区块链内核，它可以配置成许可链也可以配置成公有链。前者作为成熟产品在过去两年中成功地支撑了多家银行和金融机构的区块链创新业务。后者则专门针对各类商业应用做了改进，包括支持灵活的激励机制（原生代币经济模型）和治理机制（通过智能合约进行记账节点配置、权重分配等）。公有链模式下的CITA由强力节点作为记账节点，其他节点作为同步节点共同维护一个高性能的区块链生态。
 
 CITA将一个区块链节点的共识、网络、计算、RPC等功能进行了微服务化拆分，每一个微服务又可以有多个实例，最终这些实例共同完成一个节点的记账功能。这样，我们将区块链性能的扩展问题转化成了节点的扩展问题，当性能不足时，插入一台服务器，分担节点的工作压力即可。同时，我们将共识机制、底层逻辑进行了深度优化，例如采用Rust语言架构所有代码等。最终实现了目前*开源可实证*区块链系统的顶级性能。这是一组实测数据：由4核8G云主机构成的AppChain的性能可达到每秒2900笔简单交易；32核64G云主机组成的AppChain的性能则超过了每秒1.5万笔简单交易。而采用集群构建节点的AppChain性能则更高。这样的性能已经足以应付绝大多数应用场景。
 
 #### Neuron | DApp 钱包
+
+[![](https://img.shields.io/badge/Neuron-Documents-green.svg)](https://cryptape.github.io/neuron-android/)
+[![](https://img.shields.io/badge/Neuron-GitHub-lightgrey.svg)](https://github.com/cryptape/neuron-android/)
 
 Neuron是Nervos AppChain产品中的一个核心组件。它提供了现实世界的用户访问区块链世界的入口。Neuron一方面是Nervos Network（也兼容以太坊）上用户私钥和各类数字资产、私有产权和私有数据的管理工具，更重要的，它作为一个DApp的运行平台，可以允许各种区块链应用以小程序的方式在用户终端直接运行。
 
@@ -22,15 +28,23 @@ AppChain的运营者或者DApp开发者也可以选择重构开源的Neuron代�
 
 #### Microscope | 区块链浏览器
 
+[![](https://img.shields.io/badge/Microscope-GitHub-lightgrey.svg)](https://github.com/cryptape/microscope/)
+
 Microscope的目标是打造一个类似etherscan的区块链数据访问平台。它提供对区块数据、交易数据、账号地址数据以及智能合约的访问等必备功能。Microscope支持多链访问，只要给出对应AppChain的RPC服务地址，即可接入这条区块链并提供数据浏览服务。AppChain运营方可以部署一个自己的专用浏览器，也可以将访问接口提供给其他浏览器。
 
 未来Microscope将增加数字资产访问、结构化数据展示等功能。对应地，我们将提供一个链上KV数据自动转换为本地关系型数据的中间件，以方便DApp的开发。开发者可以通过中间件快速索引业务数据，为用户提供更加友好的服务。
 
 #### ReBirth | 区块缓存服务器
 
+[![](https://img.shields.io/badge/ReBirth-GitHub-lightgrey.svg)](https://github.com/cryptape/re-birth/)
+
 ReBirth 是一个提供区块链数据缓存服务的服务器端组件。它通过在服务器本地缓存 AppChain 上的数据，为 Microscope 和 Neuron 提供所需的数据缓存和查询服务，加快查询区块数据的速度，提升软件的使用体验。
 
 #### Nervos AppChain SDK | 软件开发工具包
+
+[![](https://img.shields.io/badge/nervos.js-GitHub-lightgrey.svg)](https://github.com/cryptape/nervos.js/)
+[![](https://img.shields.io/badge/nervosj-Documents-green.svg)](https://cryptape.github.io/nervosj/)
+[![](https://img.shields.io/badge/nervosj-GitHub-lightgrey.svg)](https://github.com/cryptape/nervosj/)
 
 考虑到签名、报文拼装，abi调用等复杂操作，区块链操作对于绝大多数开发者来说都有不小的难度。为此，我们提供了多平台SDK进一步降低开发门槛。目前正在维护的开源SDK包括 JavaScript、Java、Android、Swift 等多个版本，方便开发者使用。（目前我们已经上线了 JavaScript 版本和 Java 版本的 SDK：nervos.js 和 nervosj）
 
