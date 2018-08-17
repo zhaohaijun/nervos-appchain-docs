@@ -34,7 +34,7 @@ node 4: 121.43.163.31:1340
 
 #### 缓存服务器
 
-我们官方运行的缓存服务器的地址为：https://microscope.cryptape.com:9999
+我们官方运行的缓存服务器的地址为：https://microscope.cryptape.com:8888
 
 目前部署的这个服务器主要为我们的 Microscope 提供数据缓存服务，对接上面提到的测试 AppChain Testnet。
 
