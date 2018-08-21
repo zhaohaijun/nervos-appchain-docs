@@ -1,11 +1,11 @@
-// this is how you can deploy a contract with Nervos web3.js SDK
+// this is how you can deploy a contract with Nervos.js SDK
 
-const NervosWeb3 = require('@nervos/web3');
+const Nervos = require('@nervos/nervos').default;
 const SERVER = 'http://localhost:8888';
 const privkey = 'YOUR-PRIVATE-KEY';
 var bytecode = 'CONTRACT-BYTECODE';
 
-const web3 = NervosWeb3.default(SERVER);
+const nervos = Nervos(SERVER);
 
 const tx = {
     from: 'YOUR-PUBLIC-KEY',
@@ -17,4 +17,4 @@ const tx = {
     quota: 1000000
 };
 
-web3.cita.deploy(bytecode, tx).then(console.log);
+nervos.appchain.deploy(bytecode, tx).then(console.log);
