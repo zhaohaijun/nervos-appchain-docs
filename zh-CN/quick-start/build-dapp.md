@@ -61,7 +61,7 @@ DApp 全称 Decenteration App, 中文翻译为去中心化应用，有别于现�
 由于 AppChain DApp 支持多链，所以需要 DApp 开发者提供一个配置文件 `manifest.json`， 该配置文件会包含 DApp 运行在哪些链上，以下是 `manifest.json` 的
 示例：
 
-```json
+```javascript
 {
     "name": "Nervos First App",                                 // DApp 名称
     "blockViewer": "https://etherscan.io/",                     // 相应区块链浏览器的地址
@@ -126,10 +126,6 @@ contract SimpleStore {
 合约文件相当于在 AppChain 上建立自己的服务，业务逻辑和方法完全自定义，`SimpleStore` 相当于在 AppChain 建立一个数据库，并且对外提供了三个可用的方法。
 
 由于兼容以太坊的 EVM ，故而合约编写、编译和调试可以直接使用 [remix](https://remix.ethereum.org/)。
-
-![remix](https://cdn.cryptape.com/docs/images/remix.png)
-
-点击右侧面板的 Detail 按钮，就会显示编译详情。
 
 ![remix](https://cdn.cryptape.com/docs/images/remix_detail.png)
 
