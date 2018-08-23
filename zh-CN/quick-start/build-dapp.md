@@ -1,6 +1,8 @@
-# 在 AppChain 上完成第一个应用
+# 在 Nervos AppChain 上完成第一个应用
 
-本文档将带你完成一个Nervos AppChain DApp，并让它运行在我们的手机钱包 Neuron 上，由于 H5 DApp 也可以独立运行在 PC 或者手机浏览器中，由于我们暂时还不支持浏览器中的网页唤起原生支付页面，所以本文档讨论的是如何在手机钱包 Neuron 中开发 DApp ，签名过程由 Neuron 钱包保存的私钥来完成。
+本文档将带你完成一个Nervos AppChain DApp，并让它运行在我们的手机钱包 Neuron 上，由于 H5 DApp 也可以独立运行在 PC 或者手机浏览器中，由于我们暂时还不支持浏览器中的网页唤起手机钱包支付页面，所以本文档讨论的是如何在手机钱包 Neuron 中开发 DApp ，签名过程由 Neuron 钱包保存的私钥来完成。
+
+这里需要稍微介绍一下 AppChain，AppChain 是我们推出的一整套应用链的解决方案，包括区块链内核 [CITA](https://github.com/cryptape/cita)、手机钱包 [Neuron](https://github.com/cryptape/neuron-android)、区块链浏览器[Microscope](https://github.com/cryptape/microscope)、js版SDK [nervos.js](https://github.com/cryptape/nervos.js)以及Java版SDK [nervosj](https://github.com/cryptape/nervosj)，关于 AppChain、CITA、Neuron、Microscope以及nervos.js的详细介绍可以参看相关 [官方文档](https://docs.nervos.org/#/) 。
 
 > 注：目前 Neuron 钱包只有 Android 版本，iOS 版钱包还在紧张开发中...
 
@@ -21,30 +23,65 @@ DApp 全称 Decentralized App, 中文翻译为去中心化应用，有别于现�
 
 ## 前端开发
 
+用脚手架搭建工程
+
+[First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 使用 `create-react-app` 开始创建工程，你需要先全局安装一下  `create-react-app` 。
+
+```shell
+yarn global add create-react-app                    // install create-react-app
+
+create-react-app first_forever && cd first_forever  // 创建 first_forever 工程
+```
+
+接下来你的工程目录将会是这样的：
+
+```
+├── README.md
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── public
+    └── registerServiceWorker.js
+```
+
+更加详细的可以参考 [First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 的 [readme文档](https://github.com/cryptape/dapp-demos/blob/develop/first-forever/README.md)，该文档详述了一个项目的完整开发流程。
+
+
 ### 引入Nervos.js
 
 前端开发大部分的业务流程跟现有的互联网产品开发完全相同，唯一不同的地方就是跟区块链数据交互的逻辑，不过不用担心，我们已经提供了相应的 SDK nervos.js，你只需要调用相应的方法即可。
 
-在正式开发前，你需要在工程中引入 SDK nervos.js 通过访问 [@nervos/chain](https://www.npmjs.com/package/@nervos/chain) ，你可以在 package.json 文件中指明 nervos 
+Nervos.js 目前在 Github 上开源，地址为 `https://github.com/cryptape/nervos.js/tree/develop/packages/nervos-chain` ，详细的介绍和使用文档地址为：`https://www.npmjs.com/package/@nervos/chain` ，其中包含了一些简单 demo，包括发送交易、部署智能合约等，demo地址为：`https://github.com/cryptape/nervos.js/tree/develop/packages/nervos-chain/examples`
+
+在正式开发前，你需要在工程中引入 SDK nervos.js 通过访问 [@nervos/chain](https://www.npmjs.com/package/@nervos/chain) ，你可以在 `package.json` 文件中指明 nervos 
 依赖版本 `"@nervos/chain": "^0.17.10"`，然后执行 `npm install` 或者 `yarn install`, 当然也可以在命令行中直接执行 `yarn add @nervos/chain`。
 
 引入 `nervos.js` 后，未来所有跟链交互都会通过 nervos 实例完成，我们建议在一个单独的文件中完成所有 nervos 相关的配置，示例代码如下：
 
 ```javascript
-    const { default: Nervos } = require('@nervos/chain')            // 引入 Nervos 实例
+  const { default: Nervos } = require('@nervos/chain')            // 引入 Nervos 实例
 
-    const config = require('./config')
+  const config = require('./config')
 
-    if (typeof window.nervos !== 'undefined') {                     // 检测当前浏览器环境 window 中是否有 nervos 实例，如果有的话，用window.nervos 中的currentProvider 实例化 Nervos
-        window.nervos = Nervos(window.nervos.currentProvider);
-        window.nervos.currentProvider.setHost("localhost:1337");    // 由于存在多链的情况，需要 DApp 指明当前 AppChain 的节点IP地址信息，对于单链 DApp 只需要指定一次即可。
-    } else {
-        console.log('No nervos? You should consider trying Neuron!')// 如果当前浏览器环境 window 中没有 nervos 实例，则需要手动提供节点IP地址，并完成实例化
-        window.nervos = Nervos(config.chain);
-    }
-    var nervos = window.nervos
+  if (typeof window.nervos !== 'undefined') {                     // 检测当前浏览器环境 window 中是否有 nervos 实例，如果有的话，用window.nervos 中的currentProvider 实例化 Nervos
+      window.nervos = Nervos(window.nervos.currentProvider);
+      window.nervos.currentProvider.setHost("localhost:1337");    // 由于存在多链的情况，需要 DApp 指明当前 AppChain 的节点IP地址信息，对于单链 DApp 只需要指定一次即可。
+  } else {
+      console.log('No nervos? You should consider trying Neuron!')// 如果当前浏览器环境 window 中没有 nervos 实例，则需要手动提供节点IP地址，并完成实例化
+      window.nervos = Nervos(config.chain);
+  }
+  var nervos = window.nervos
 
-    module.exports = nervos
+  module.exports = nervos
 ```
 > 注：这里需要说明一点，为什么需要检测浏览器环境、`window` 中是否有 `nervos` 实例。主要是为了实现钱包拦截 DApp 发送的交易请求，通常钱包会往浏览器环境中注入 js 代码，同时在 `window` 中提供 `nervos` 实例，而改用 
 `window.nervos.currentProvider` 初始化 Nervos 是为了方便钱包做请求拦截。
