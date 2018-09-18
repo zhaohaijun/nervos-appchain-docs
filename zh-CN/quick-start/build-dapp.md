@@ -105,3 +105,4 @@ AppChain 上的交易结构如下所示
 一个从以太坊移植到 AppChain 上的 DApp。
 
 ## 参考阅读
+* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
