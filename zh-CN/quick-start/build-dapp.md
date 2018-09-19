@@ -5,8 +5,6 @@
 
 #### 账户、地址、私钥、钱包
 
-
-
 #### 交易
 #### 智能合约
 #### ERC20 代币 -->
@@ -44,7 +42,7 @@ Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.
 
 ### AppChain 交易的结构
 
-名称 | 类型 | 必需 | 解释
+**名称**	|**类型**	|**必需**   |**描述**	|
 --- | --- | --- | ---
 `from` | string | 是 | 交易的发送方的地址
 `to` | string | 是，创建合约的时必需为空|交易的接收方的地址
@@ -56,7 +54,7 @@ Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.
 `validUntilBlock` | int |是| 该交易的有效区块高度，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84valid_until_block%E6%98%AF%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F)
 `value` | string |是| 该交易所转的币的数量
 `data` | string |是| 该交易所包含的 data 信息
-<!-- 
+
 关于 `privateKey` 字段如何填写,首先看是否有钱包环境:  
 如果有钱包环境，交易结构体里面 **不能加** `privateKey` 字段（会被 SDK 签名而不是被钱包签名）  
 如果没有钱包环境，则可以通过以下两种方式来选择签名使用的私钥
@@ -64,7 +62,7 @@ Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.
 2. 在 SDK 的 account 里面加入一个账户
 
 !> 发送交易时，SDK 优先使用交易结构体里面的私钥进行签名
-
+<!-- 
 #### 交易结构体示例
 
 **普通交易示例**
@@ -86,31 +84,12 @@ Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.
 
 **调用合约的交易示例**
 
-**调用合约的交易示例**
- -->
+**调用合约的交易示例** -->
+
 
 ### DApp 的 manifest.json 文件
-Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一个开源项目，这就意味着会有很多条 AppChain 同时存在，承载不同的业务。同时也意味着一个 DApp 可能会同时使用多条 AppChain 上的资产来实现一些功能。所以，为了让 DApp 的运行环境（钱包环境）知道该 DApp 要使用哪些 AppChain 上的资产，需要使用一个 `manifest.json` 文件来对 DApp 将要使用的链进行配置。  
-除了对多链的配置以外，`manifest.json` 还包括了一些对 DApp 本身的配置。
+Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一个开源项目，这就意味着会有很多条 AppChain 同时存在，承载不同的业务。同时也意味着一个 DApp 可能会同时使用多条 AppChain 上的资产来实现一些功能。所以，为了让 DApp 的运行环境（钱包环境）知道该 DApp 要使用哪些 AppChain 上的资产，需要使用一个 `manifest.json` 文件来对 DApp 将要使用的链进行配置。除了对多链的配置以外，`manifest.json` 还包括了一些对 DApp 本身的配置。具体请参考[多链协议](miscellaneous/multichain.md#dapp-ui-与终端钱包握手)。
 
-manifest.json 配置文件示例
-```javascript
-{
-    "name": "Nervos First App",                                 // DApp 名称
-    "blockViewer": "https://etherscan.io/",                     // 相应区块链浏览器的地址
-    "chainSet": {                                               // DApp 所在链的信息集合
-      "1": "http://121.196.200.225:1337"                        // key: chainId  value: 节点地址
-    },
-    "icon": "http://7xq40y.com1.z0.glb.clouddn.com/23.pic.jpg", // DApp 图标
-    "entry": "index.html",                                      // DApp 入口地址
-    "provider": "https://cryptape.com/"                         // DApp 提供者的网址
-}
-```
-
-并且需要在 html 文件中对该 manifest 文件进行引用
-```html
-<link rel="manifest" href="manifest.json">
-```
 
 ## Demo 和教程
 我们准备了以下 demo 来帮助你入门在 AppChain 上的开发。每一个 demo 的 readme 里面都有对应的教程。所有 demo 的源文件都这个 [GitHub 仓库](https://github.com/cryptape/dapp-demos/tree/master)里。

@@ -5,5 +5,5 @@
 - 进阶信息
     - [经济模型](miscellaneous/economic-model.md)
     - [治理模型](miscellaneous/governance-model.md)
-    - [多链协议](miscellaneous/multichain-rfc.md)
+    - [多链协议](miscellaneous/multichain.md)
     - [跨链资产流转](miscellaneous/cross-chain.md)
