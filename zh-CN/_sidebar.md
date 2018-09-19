@@ -7,7 +7,3 @@
     - [治理模型](miscellaneous/governance-model.md)
     - [多链协议](miscellaneous/multichain-rfc.md)
     - [跨链资产流转](miscellaneous/cross-chain.md)
-- 智能合约
-    - [智能合约简介](smart-contract/intro.md)
-    - [智能合约（Solidity）](smart-contract/solidity.md)
-    - [智能合约（Rust）](smart-contract/rust.md)
