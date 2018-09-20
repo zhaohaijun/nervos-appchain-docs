@@ -1,14 +1,5 @@
 # DApp 开发
 
-<!-- ## 基础知识
-我们先介绍一些基础概念，帮助第一次接触区块链的开发者来理解 AppChain。
-
-#### 账户、地址、私钥、钱包
-
-#### 交易
-#### 智能合约
-#### ERC20 代币 -->
-
 ## 准备工作
 在进行 DApp 开发之前，我们需要先拥有一个 AppChain 上的账户，并为该账户充入一些测试币来进行交易和合约部署调用等操作。
 
@@ -24,7 +15,10 @@ Nervos AppChain 的账户系统与以太坊完全一致，用户可以选择直
 
 如果是使用本地部署的 AppChain，则可以选择从共识节点的账户中来转出一些代币。关于共识节点的账户信息如何获取，可以参考[链的配置文档](https://docs.nervos.org/cita/#/chain/config_tool?id=setup)。
 
-## AppChain 开发相关知识
+## DApp 开发流程简介
+
+
+## AppChain 开发
 AppChain 上的 DApp 开发与以太坊（Ethereum）上的 DApp 开发基本一致。参考阅读里面我们提供了一些以太坊上的 DApp 的开发教程。 同时我们也提供了一些 [demo 和教程](#Demo-和教程)  来帮助你开始 AppChain 上的 DApp 开发。这里我们列出了一些 AppChain 开发中所必备的知识。
 
 ### 智能合约开发
@@ -88,7 +82,7 @@ Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.
 
 
 ### DApp 的 manifest.json 文件
-Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一个开源项目，这就意味着会有很多条 AppChain 同时存在，承载不同的业务。同时也意味着一个 DApp 可能会同时使用多条 AppChain 上的资产来实现一些功能。所以，为了让 DApp 的运行环境（钱包环境）知道该 DApp 要使用哪些 AppChain 上的资产，需要使用一个 `manifest.json` 文件来对 DApp 将要使用的链进行配置。除了对多链的配置以外，`manifest.json` 还包括了一些对 DApp 本身的配置。具体请参考[多链协议](miscellaneous/multichain.md#dapp-ui-与终端钱包握手)。
+Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一个开源项目，这就意味着会有很多条 AppChain 同时存在，承载不同的业务。同时也意味着一个 DApp 可能会同时使用多条 AppChain 上的资产来实现一些功能。所以，为了让 DApp 的运行环境（钱包环境）知道该 DApp 要使用哪些 AppChain 上的资产，需要使用一个 `manifest.json` 文件来对 DApp 将要使用的链进行配置。除了对多链的配置以外，`manifest.json` 还包括了一些对 DApp 本身的配置。具体协议请参考[多链协议](miscellaneous/multichain.md#dapp-ui-与终端钱包握手)。在 Demo First Forever 里面我们给出了一个 manifest 文件的[示例](https://github.com/cryptape/dapp-demos/blob/master/first_forever/public/manifest.json)。
 
 
 ## Demo 和教程
