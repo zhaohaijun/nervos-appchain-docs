@@ -15,7 +15,7 @@ Nervos AppChain 的账户系统与以太坊完全一致，用户可以选择直
 
 如果是使用本地部署的 AppChain，则可以选择从共识节点的账户中来转出一些代币。关于共识节点的账户信息如何获取，可以参考[链的配置文档](https://docs.nervos.org/cita/#/chain/config_tool?id=setup)。
 
-## DApp 开发流程简介
+<!-- ## DApp 开发流程简介 -->
 
 
 ## AppChain 开发
@@ -56,29 +56,6 @@ Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.
 2. 在 SDK 的 account 里面加入一个账户
 
 !> 发送交易时，SDK 优先使用交易结构体里面的私钥进行签名
-<!-- 
-#### 交易结构体示例
-
-**普通交易示例**
-```javascript
-{
-  from: '0xb4061fA8E18654a7d51FEF3866d45bB1DC688717',
-  to: '0xb4061fA8E18654a7d51FEF3866d45bB1DC688717',
-  privateKey: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-  nonce: 999999,
-  quota: 1000000,
-  chainId: 1,
-  version: 0,
-  validUntilBlock: 999999,
-  value: '0x77',
-}
-```
-
-**部署合约的交易示例**
-
-**调用合约的交易示例**
-
-**调用合约的交易示例** -->
 
 
 ### DApp 的 manifest.json 文件
