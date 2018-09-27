@@ -12,41 +12,15 @@
     <meta name="description" content="Description">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-    <link rel="stylesheet" href="https://cdn.cryptape.com/styles/docs.css">
 </head>
 
 <body>
-
-
     <nav class="app-nav no-badge">
         <ul>
             <li>
-                <a href="https://docs.nervos.org/" target="_about" class="app-nav-1">Nervos</a>
-                <ul>
-                    <li>
-                        <a href="https://cryptape.github.io/nervos-appchain-docs/">AppChain</a>
-                    </li>
-                    <li>
-                        <a href="https://cryptape.github.io/cita/" target="_about">CITA</a>
-                    </li>
-                    <li>
-                        <a href="https://cryptape.github.io/neuron-android/#/" target="_about">Neuron</a>
-                    </li>
-                    <li>
-                        <a href="https://cryptape.github.io/nervosj/" target="_about">nervosj</a>
-                    </li>
-                </ul>
+                <a href="https://docs.nervos.org/" target="_blank" class="app-nav-1">Nervos</a>
+                <ul id="project-list"></ul>
             </li>
-            <!-- <li id="tag_language">Language
-                <ul>
-                    <li>
-                        <a href="" onclick="setLang('en-US');">EN</a>
-                    </li>
-                    <li>
-                        <a href="" onclick="setLang('zh-CN');">中文</a>
-                    </li>
-                </ul>
-            </li> -->
         </ul>
     </nav>
 
@@ -80,6 +54,17 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-122001869-2');
+
+        // external script
+        const external = document.createElement("script")
+        const timeStamp = new Date().getTime()
+        external.src = "https://cdn.cryptape.com/scripts/external.js?" + timeStamp
+        document.body.appendChild(external)
+        // custom style
+        const docStyle = document.createElement('link')
+        docStyle.rel = 'stylesheet'
+        docStyle.href = "https://cdn.cryptape.com/styles/docs.css?" + timeStamp
+        document.head.appendChild(docStyle)
     </script>
     <script src="https://cdn.cryptape.com/scripts/external.js"></script>
 
