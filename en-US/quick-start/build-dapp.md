@@ -77,9 +77,10 @@ Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一
     一个包含了 SDK `nervos.js` 所有方法的 demo 页面。
 * [Token Factory](https://github.com/cryptape/dapp-demos/tree/master/token-factory)  
     一个从以太坊移植到 AppChain 上的 DApp。
+* [Pet-Shop](https://github.com/cryptape/dapp-demos/tree/release/pet-shop) 一个使用 AppChain Truffle Box 实现的 Pet-Shop demo。
 * [Rust Contract](https://github.com/cryptape/dapp-demos/tree/develop/rust-contract)  
     一个用 Rust 编写智能合约的简单教程
 
 ## 参考阅读
 
-* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
+* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
