@@ -1,11 +1,10 @@
-# 部署一条 AppChain
+# AppChain 部署
 
-在开始正式开发AppChain DApp之前，我们需要先有一条AppChain。可以从以下方案中进行选择：
-* [测试链](#测试链)
+在开始正式开发 AppChain DApp 之前，我们需要先有一条 AppChain。可以从以下方案中进行选择：
+* [测试链（推荐）](#测试链)
+* [自行部署](https://docs.nervos.org/cita/#/chain/getting_started)
 * [使用华为云一键部署](#华为云一键部署)
 * [使用万云 BaaS 服务](#万云BaaS服务)
-* [自行部署](https://docs.nervos.org/cita/#/chain/getting_started)
-
 
 ## 测试链
 
@@ -19,7 +18,7 @@ node 3: 47.96.84.91:1339
 node 4: 121.43.163.31:1340  
 ```
 
-测试链的内核 CITA 的版本为 `v0.17`，目前支持的 Solidity 智能合约版本为 v0.4.24。
+测试链的内核 CITA 的版本为 [`v0.18`](https://github.com/cryptape/cita/releases/tag/v0.18)，目前支持的 Solidity 智能合约版本为 v0.4.24。
 
 > **给节点设置域名并加上 https 证书是必要的！**比如上述的 `node 1` 可以通过域名 https://node.cryptape.com 来访问。这是因为如果我们希望使用 https 协议来访问某个基于 AppChain 的前端服务，我们就需要给它使用了的后端服务同样加上证书。这就需要我们给 AppChain 的节点也设置域名并加上 https 证书。我们建议您在部署自己的 AppChain 时也给只读节点或记账节点给予证书。
 

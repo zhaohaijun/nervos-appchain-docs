@@ -1,255 +1,78 @@
-# 在 Nervos AppChain 上完成第一个应用
+# DApp 开发
 
-本文档将带你完成一个Nervos AppChain DApp，并让它运行在我们的手机钱包 Neuron 上，由于 H5 DApp 也可以独立运行在 PC 或者手机浏览器中，由于我们暂时还不支持浏览器中的网页唤起手机钱包支付页面，所以本文档讨论的是如何在手机钱包 Neuron 中开发 DApp ，签名过程由 Neuron 钱包保存的私钥来完成。
+## 准备工作
+在进行 DApp 开发之前，我们需要先拥有一个 AppChain 上的账户，并为该账户充入一些测试币来进行交易和合约部署调用等操作。
 
-这里需要稍微介绍一下 AppChain，AppChain 是我们推出的一整套应用链的解决方案，包括区块链内核 [CITA](https://github.com/cryptape/cita)、手机钱包 [Neuron](https://github.com/cryptape/neuron-android)、区块链浏览器[Microscope](https://github.com/cryptape/microscope)、js版SDK [nervos.js](https://github.com/cryptape/nervos.js)以及Java版SDK [nervosj](https://github.com/cryptape/nervosj)，关于 AppChain、CITA、Neuron、Microscope以及nervos.js的详细介绍可以参看相关 [官方文档](https://docs.nervos.org/#/) 。
+### 如何获得 AppChain 上的账户地址和私钥
+Nervos AppChain 的账户系统与以太坊完全一致，用户可以选择直接使用以太坊上的账户。如果没有以太坊账户可以选择通过以下方式获得一个账户：
+* 使用在线工具 [MyEtherWallet](https://www.myetherwallet.com/) 创建一个账户（推荐）
+* 使用 [CITA-CLI](https://github.com/cryptape/cita-cli) 工具创建一个账户
 
-> 注：目前 Neuron 钱包只有 Android 版本，iOS 版钱包还在紧张开发中...
+?> 同一个 AppChain 账户可以在不同的 AppChain 上使用；但是同一个账户在不同 AppChain 上所拥有的资产是不一样。这类似于您在以太坊测试链上获得的测试币，并不代表你在以太坊主链上获得了同样多的以太币。
 
-DApp 全称 Decentralized App, 中文翻译为去中心化应用，有别于现有互联网应用，DApp 增加了智能合约和链上数据交互的逻辑，简单来说，DApp 就是现有的互联网服务加上智能合约。
-所以要开发一个完整的 DApp, 大致需要三个步骤：
+### 如何获得测试币
+如果使用的是我们的 [AppChain Testnet](quick-start/deploy-appchain.md#测试链) ，可以通过[水龙头（faucet）](quick-start/deploy-appchain.md#水龙头)来获取测试币。
 
-1. 开发前端应用，如果需要中心化服务存储业务数据的话，还需要自行搭建后端服务，目前前端应用更多的是H5，手机App还不是很多，所以本文会重点介绍H5应用；
-2. 编写智能合约，智能合约包含了链上处理业务的所有逻辑；
-3. 打通前端应用与链上智能合约的数据交互。
+如果是使用本地部署的 AppChain，则可以选择从共识节点的账户中来转出一些代币。关于共识节点的账户信息如何获取，可以参考[链的配置文档](https://docs.nervos.org/cita/#/chain/config_tool?id=setup)。
 
-为了方便接下来的讲述，这里稍微介绍一下前端应用与区块链（这里主要是指 AppChain ）的交互逻辑，通常来说我们会将一些需要长久保存或者多人共识的数据保存在区块链上，链上数据存储本质上是在发送交易，业务数据被包含在特定的交易字段中，每一笔交易都是需要入块并共识的，所以通常需要等待一段时间。而读取数据只需要调用 Http RPC 请求即可，并不需要入块共识，所以可以很快获取到结果。
-
-区块链交易都是需要私钥签名的，而出于安全性考虑，私钥只会保存在钱包中，不会保存在 DApp 中，所以就需要钱包协助 DApp 签名，如果使用过 MetaMask 可能会有比较直观的感受，当你在需要购买加密猫时，会自动唤起 MetaMask，同样的，当你在手机上使用 AppChain DApp 时，也会唤起手机原生的签名支付页面，而要实现这一点，目前通行的方案是手机钱包拦截 DApp 的发交易请求，待签名完成后，再转发到相应的区块链上，完成最终的交易。
-
-好了，基础知识就先介绍到这里，接下来我们正式开始讲述 DApp 开发流程。
-
-本文档假设你已经有了一些简单的前端知识，包括基本的 HTML 和 JavaScript ，所以我们不会花费太多的篇幅介绍前端基础开发上。
-
-## 前端开发
-
-用脚手架搭建工程
-
-[First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 使用 `create-react-app` 开始创建工程，你需要先全局安装一下  `create-react-app` 。
-
-```shell
-yarn global add create-react-app                    // install create-react-app
-
-create-react-app first_forever && cd first_forever  // 创建 first_forever 工程
-```
-
-接下来你的工程目录将会是这样的：
-
-```
-├── README.md
-├── package.json
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── App.css
-    ├── App.js
-    ├── App.test.js
-    ├── index.css
-    ├── index.js
-    ├── logo.svg
-    ├── public
-    └── registerServiceWorker.js
-```
-
-更加详细的可以参考 [First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 的 [readme文档](https://github.com/cryptape/dapp-demos/blob/develop/first-forever/README.md)，该文档详述了一个项目的完整开发流程。
+<!-- ## DApp 开发流程简介 -->
 
 
-### 引入Nervos.js
+## AppChain 开发
+AppChain 上的 DApp 开发与以太坊（Ethereum）上的 DApp 开发基本一致。参考阅读里面我们提供了一些以太坊上的 DApp 的开发教程。 同时我们也提供了一些 [demo 和教程](#Demo-和教程)  来帮助你开始 AppChain 上的 DApp 开发。这里我们列出了一些 AppChain 开发中所必备的知识。
 
-前端开发大部分的业务流程跟现有的互联网产品开发完全相同，唯一不同的地方就是跟区块链数据交互的逻辑，不过不用担心，我们已经提供了相应的 SDK nervos.js，你只需要调用相应的方法即可。
+### 智能合约开发
+AppChain 上的智能合约开发支持使用以太坊的 [Solidity](https://en.wikipedia.org/wiki/Solidity) 语言和 CITA 的原生开发语言 Rust。
 
-Nervos.js 目前在 Github 上开源，地址为 `https://github.com/cryptape/nervos.js/tree/develop/packages/nervos-chain` ，详细的介绍和使用文档地址为：`https://www.npmjs.com/package/@nervos/chain` ，其中包含了一些简单 demo，包括发送交易、部署智能合约等，demo地址为：`https://github.com/cryptape/nervos.js/tree/develop/packages/nervos-chain/examples`
+使用 Solidity 语言在 AppChain 上进行合约开发与在以太坊上进行合约开发完全一致。可以参考[ Solidity 官方文档](https://solidity.readthedocs.io/en/v0.4.25/)和网上其他资料进行学习。在开发的时候可以使用 [Remix](https://remix.ethereum.org/) 进行合约调试。（暂时不能直接进行合约部署，相关解决方案正在开发中）
 
-在正式开发前，你需要在工程中引入 SDK nervos.js 通过访问 [@nervos/chain](https://www.npmjs.com/package/@nervos/chain) ，你可以在 `package.json` 文件中指明 nervos 
-依赖版本 `"@nervos/chain": "^0.17.10"`，然后执行 `npm install` 或者 `yarn install`, 当然也可以在命令行中直接执行 `yarn add @nervos/chain`。
+Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.org/cita/#/chain/config_tool?id=%E7%B3%BB%E7%BB%9F%E5%90%88%E7%BA%A6)。我们也提供了一篇简单的教程来讲解如何[开发一个 Rust 的智能合约](https://github.com/cryptape/dapp-demos/tree/develop/rust-contract)。
 
-引入 `nervos.js` 后，未来所有跟链交互都会通过 nervos 实例完成，我们建议在一个单独的文件中完成所有 nervos 相关的配置，示例代码如下：
+使用
 
-```javascript
-  const { default: Nervos } = require('@nervos/chain')            // 引入 Nervos 实例
+?> 目前支持的 Solidity 版本可以参考 [测试链信息](quick-start/deploy-appchain.md#测试链)
 
-  const config = require('./config')
+<!-- 这里未来可以补充一个表，用来放哪个版本的 CITA 支持哪个版本的 solidity -->
 
-  if (typeof window.nervos !== 'undefined') {                     // 检测当前浏览器环境 window 中是否有 nervos 实例，如果有的话，用window.nervos 中的currentProvider 实例化 Nervos
-      window.nervos = Nervos(window.nervos.currentProvider);
-      window.nervos.currentProvider.setHost("localhost:1337");    // 由于存在多链的情况，需要 DApp 指明当前 AppChain 的节点IP地址信息，对于单链 DApp 只需要指定一次即可。
-  } else {
-      console.log('No nervos? You should consider trying Neuron!')// 如果当前浏览器环境 window 中没有 nervos 实例，则需要手动提供节点IP地址，并完成实例化
-      window.nervos = Nervos(config.chain);
-  }
-  var nervos = window.nervos
+### AppChain 交易的结构
 
-  module.exports = nervos
-```
-> 注：这里需要说明一点，为什么需要检测浏览器环境、`window` 中是否有 `nervos` 实例。主要是为了实现钱包拦截 DApp 发送的交易请求，通常钱包会往浏览器环境中注入 js 代码，同时在 `window` 中提供 `nervos` 实例，而改用 
-`window.nervos.currentProvider` 初始化 Nervos 是为了方便钱包做请求拦截。
+**名称**	|**类型**	|**必需**   |**描述**	|
+--- | --- | --- | ---
+`from` | string | 是 | 交易的发送方的地址
+`to` | string | 是，创建合约的时必需为空|交易的接收方的地址
+`privateKey` | string |（见下面解释）| 对交易进行签名的私钥
+`nonce` | int |是| 交易 nonce，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84nonce%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F)
+`quota` | int |是| 交易花费的费用，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84quota%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F)
+`chainId` | int |是| 链的 ID
+`version` | int |是| 链的版本？
+`validUntilBlock` | int |是| 该交易的有效区块高度，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84valid_until_block%E6%98%AF%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F)
+`value` | string |是| 该交易所转的币的数量
+`data` | string |是| 该交易所包含的 data 信息
 
-我们还特意开发了一个示例 DApp [First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 供开发者学习。
+关于 `privateKey` 字段如何填写,首先看是否有钱包环境:  
+如果有钱包环境，交易结构体里面 **不能加** `privateKey` 字段（会被 SDK 签名而不是被钱包签名）  
+如果没有钱包环境，则可以通过以下两种方式来选择签名使用的私钥
+1. 在交易结构体里面加入 `privateKey` 字段
+2. 在 SDK 的 account 里面加入一个账户
 
-### 配置 manifest.json 
+!> 发送交易时，SDK 优先使用交易结构体里面的私钥进行签名
 
-由于 AppChain DApp 支持多链，所以需要 DApp 开发者提供一个配置文件 `manifest.json`， 该配置文件会包含 DApp 运行在哪些链上，以下是 `manifest.json` 的
-示例：
 
-```javascript
-{
-    "name": "Nervos First App",                                 // DApp 名称
-    "blockViewer": "https://etherscan.io/",                     // 相应区块链浏览器的地址
-    "chainSet": {                                               // DApp 所在链的信息集合
-      "1": "http://121.196.200.225:1337"                        // key: chainId  value: 节点 host
-    },
-    "icon": "http://7xq40y.com1.z0.glb.clouddn.com/23.pic.jpg", // DApp 图标
-    "entry": "index.html",                                      // DApp 入口地址
-    "provider": "https://cryptape.com/"                         // DApp 提供者
-}
-```
-从 `manifest.json` 文件可以看出，我们是通过 `chainSet` 的方式来展示多链信息，我们建议将 `mainfest.json` 文件放到根目录，然后在 html 文件中声明 `mainfest.json` 的文件路径，示例如下：
+### DApp 的 manifest.json 文件
+Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一个开源项目，这就意味着会有很多条 AppChain 同时存在，承载不同的业务。同时也意味着一个 DApp 可能会同时使用多条 AppChain 上的资产来实现一些功能。所以，为了让 DApp 的运行环境（钱包环境）知道该 DApp 要使用哪些 AppChain 上的资产，需要使用一个 `manifest.json` 文件来对 DApp 将要使用的链进行配置。除了对多链的配置以外，`manifest.json` 还包括了一些对 DApp 本身的配置。具体协议请参考[多链协议](miscellaneous/multichain.md#dapp-ui-与终端钱包握手)。在 Demo First Forever 里面我们给出了一个 manifest 文件的[示例](https://github.com/cryptape/dapp-demos/blob/master/first_forever/public/manifest.json)。
 
-```javascript
-<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-```
 
-钱包 Neuron 会读取 DApp 的 `mainfest.json` 文件，作为识别 DApp 发送到哪条 AppChain 的依据，简单来说，AppChain 的每一笔交易数据中都会包含 `chainId` ，Neuon 根据 `chainId` 决定发送到那个节点 IP 地址。
+## Demo 和教程
+我们准备了以下 demo 来帮助你入门在 AppChain 上的开发。每一个 demo 的 readme 里面都有对应的教程。所有 demo 的源文件都这个 [GitHub 仓库](https://github.com/cryptape/dapp-demos/tree/master)里。
 
-## 智能合约
+* [First Forever](https://github.com/cryptape/dapp-demos/tree/master/first_forever)  
+一个带你从零开始学习 AppChain DApp 开发的小 demo
+* [NervosAPI](https://github.com/cryptape/dapp-demos/tree/master/nervos-api)  
+一个包含了 SDK `nervos.js` 所有方法的 demo 页面。
+* [Token Factory](https://github.com/cryptape/dapp-demos/tree/master/token-factory)  
+一个从以太坊移植到 AppChain 上的 DApp。
+* [Rust Contract](https://github.com/cryptape/dapp-demos/tree/develop/rust-contract)  
+一个用 Rust 编写智能合约的简单教程
 
-AppChain 的 EVM 是完全兼容以太坊的，所以只要是能在以太坊跑通的智能合约都可以直接移植到 AppChain，目前以太坊上主流的智能合约开发语言是 Solidity，下面我们以一个简单存储 
-[SimpleStore](https://github.com/cryptape/dapp-demos/blob/develop/first-forever/src/contracts/SimpleStore.sol) 合约为例，介绍一下智能合约从编写、部署
-到调用的详细过程。
-
-Solidity 合约文件如下：
-
-```solidity
-pragma solidity 0.4.24;
-
-contract SimpleStore {
-    mapping (address => mapping (uint256 => string)) private records;
-    mapping (address => uint256[]) private categories;
-
-    event Recorded(address _sender, string indexed _text, uint256 indexed _time);
-
-    function _addToList(address from, uint256 time) private {
-        categories[from].push(time);
-    }
-
-    function getList()
-    public
-    view
-    returns (uint256[])
-    {
-        return categories[msg.sender];
-    }
-
-    function add(string text, uint256 time) public {
-        records[msg.sender][time]=text;
-        _addToList(msg.sender, time);
-        emit Recorded(msg.sender, text, time);
-    }
-    function get(uint256 time) public view returns(string) {
-
-        return records[msg.sender][time];
-    }
-}
-```
-
-这个合约逻辑很简单，主要包含了三个对外方法，一个 `add` 方法，用来往链上存储文字和时间戳信息，一个 `get` 方法，用来根据时间戳信息获取链上文字信息，最有一个是 `getList` 方法，用来获取当前地址下的所有历史存储信息。
-合约文件相当于在 AppChain 上建立自己的服务，业务逻辑和方法完全自定义，`SimpleStore` 相当于在 AppChain 建立一个数据库，并且对外提供了三个可用的方法。
-
-由于兼容以太坊的 EVM ，故而合约编写、编译和调试可以直接使用 [remix](https://remix.ethereum.org/)。
-
-![remix](https://cdn.cryptape.com/docs/images/remix_detail.png)
-
-这里的 `bytecode` 和 `abi` 接下来会用到，我们姑且将其放入 [compiled.js](https://github.com/cryptape/dapp-demos/blob/develop/first-forever/src/contracts/compiled.js) 文件中。
-
-部署合约可以使用我们官方提供的 AppChain-Truffle-Box，详细的部署方式可以参考 [AppChain-Truffle-Box](https://github.com/cryptape/appchain-truffle-box/blob/master/README.md) 文档。
-
-部署成功后，会得到合约地址 `contractAddress`。
-
-## 前端应用与智能合约的数据交互
-
-为了方便调用合约方法，我们首先需要根据 `bytecode` 和 `abi` 来构造 `Contract` 实例，我们以 [First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 为例：
-
-```javascript
-const nervos = require('./nervos')
-const { abi } = require('./contracts/compiled.js')
-const { contractAddress } = require('./config')
-
-const transaction = require('./contracts/transaction')
-const simpleStoreContract = new nervos.appchain.Contract(abi, contractAddress)      // 根据 bytecode 和 abi 实例化 SimpleStore 合约对象
-module.exports = {
-  transaction,
-  simpleStoreContract,
-}
-```
-
-上文提到了合约中包含 `add` 和 `getList` 两个方法，那么我们就来详细介绍一下如何在 js 文件中调用这两个方法。我们还是以[First Forever](https://github.com/cryptape/dapp-demos/tree/neuron/first_forever) 为例：
-
-在示例工程中 `src/containers/Add/index.jsx`
-
-```javascript
-handleSubmit = e => {
-  const { time, text } = this.state
-  nervos.appchain
-    .getBlockNumber()
-    .then(current => {
-      const tx = {
-        ...transaction,
-        validUntilBlock: +current + 88,         // AppChain 交易数据结构中需要用到当前块高度
-      }
-      this.setState({
-        submitText: submitTexts.submitting,
-      })
-      return simpleStoreContract.methods.add(text, +time).send(tx) // 执行合约中的 add 方法
-    })
-    .then(res => {
-      if (res.hash) {
-        return nervos.listeners.listenToTransactionReceipt(res.hash)    // 数据上链后需要经过至少3S（出块时间为3S）的入块共识，需要监听入块事件
-      } else {
-        throw new Error('No Transaction Hash Received')
-      }
-    })
-    .then(receipt => {
-      if (!receipt.errorMessage) {
-        this.setState({ submitText: submitTexts.submitted })
-      } else {
-        throw new Error(receipt.errorMessage)
-      }
-    })
-    .catch(err => {
-      this.setState({ errorText: JSON.stringify(err) })
-    })
-}
-```
-由于调用合约的 `add` 方法本质上在向 AppChain 发送交易，而且 `add` 方法需要更改链上数据，所以需要上链共识。
-
-关于 AppChain 交易参数的详细介绍可以参考 [CITA官方文档](https://docs.nervos.org/cita/#/rpc_guide/rpc?id=sendrawtransaction)
-
-添加过数据后，就可以通过调用 `getList` 方法验证数据是否添加成功，示例代码如下：
-
-`src/containers/List/index.jsx`：
-
-```javascript
-componentDidMount() {
-  const from = window.neuron.getAccount()           // 当前账号由 Neuron 钱包提供
-  simpleStoreContract.methods
-    .getList()
-    .call({
-      from,
-    })
-    .then(times => {
-      times.reverse()
-      this.setState({ times })
-      return Promise.all(times.map(time => simpleStoreContract.methods.get(time).call({ from })))  // 只读接口不需要入块共识，所以请求返回值就是需要的数据
-    })
-    .then(texts => {
-      this.setState({ texts })
-    })
-    .catch(console.error)
-}
-```
-
-这样就完成了一个简单的 DApp，从前端页面开发，到智能合约编写和部署，再到前端和 AppChain 数据交互，部署到服务器上，在手机钱包 Neuron 输入地址即可访问。
-
-此文档只是抛砖引玉，希望你能发挥创造力，做出一个改变世界的产品。
+## 参考阅读
+* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
