@@ -1,139 +1,85 @@
-# 完成一个DApp
+# DApp 开发
 
-!> **This document is deprecated!**  
-在经过 SDK 和 AppChain 的更新之后，**本文档已经过期**。我们正在撰写一个新的文档来帮助开发者学习 DApp 开发，在此之前您可以参考这个例子 [First Forever](https://github.com/cryptape/dapp-demos/tree/develop/first-forever) 。
+## 准备工作
 
-本文档将带你完成一个DApp，并让它运行在我们的手机钱包Neuron上。
+在进行 DApp 开发之前，我们需要先拥有一个 AppChain 上的账户，并为该账户充入一些测试币来进行交易和合约部署调用等操作。
 
-本文档假设你已经有了一些简单的前端知识，包括基本的HTML和JavaScript。
+### 如何获得 AppChain 上的账户地址和私钥
 
-## 配置manifest.json
+Nervos AppChain 的账户系统与以太坊完全一致，用户可以选择直接使用以太坊上的账户。如果没有以太坊账户可以选择通过以下方式获得一个账户：
 
-在Neuron和AppChain上运行的DApp需要有一个manifest.json
+* 使用在线工具 [MyEtherWallet](https://www.myetherwallet.com/) 创建一个账户（推荐）
+* 使用 [CITA-CLI](https://github.com/cryptape/cita-cli) 工具创建一个账户
 
-## 示例代码
+?> 同一个 AppChain 账户可以在不同的 AppChain 上使用；但是同一个账户在不同 AppChain 上所拥有的资产是不一样。这类似于您在以太坊测试链上获得的测试币，并不代表你在以太坊主链上获得了同样多的以太币。
 
-我们已经为上一节中部署的智能合约开发了一个前端示例，通过这个示例你可以了解到如何使用Nervos Web3 SDK完成与AppChain的交互。 完整的代码文件也可以在上一节中的代码包里找到。
+### 如何获得测试币
 
-### 引入 web3.js
+如果使用的是我们的 [AppChain Testnet](quick-start/deploy-appchain.md#测试链) ，可以通过[水龙头（faucet）](quick-start/deploy-appchain.md#水龙头)来获取测试币。
 
-首先需要引入`web3.js`文件和 `bignumber.js`文件。
+如果是使用本地部署的 AppChain，则可以选择从共识节点的账户中来转出一些代币。关于共识节点的账户信息如何获取，可以参考[链的配置文档](https://docs.nervos.org/cita/#/chain/config_tool?id=setup)。
 
-    <script type="text/javascript" src="js/bignumber.js"></script>
-    <script type="text/javascript" src="js/web3-light.js"></script>
-    
+<!-- ## DApp 开发流程简介 -->
 
-### 设置参数
+## AppChain 开发
 
-给出必需的参数
+AppChain 上的 DApp 开发与以太坊（Ethereum）上的 DApp 开发基本一致。参考阅读里面我们提供了一些以太坊上的 DApp 的开发教程。 同时我们也提供了一些 [demo 和教程](#Demo-和教程) 来帮助你开始 AppChain 上的 DApp 开发。这里我们列出了一些 AppChain 开发中所必备的知识。
 
-    //params to send transaction
-    const privkey = 'YOUR-PRIVATE-KEY';
-    const quota = 999999;
-    
-    //deployed contract address
-    var contractAddress = "CONTRACT-ADDRESS";
-    
-    //AppChain address
-    var chainAddress = "BLOCKCHAIN-HOST-ADDRESS";
-    
-    //abi for deployed contract
-    var abi = [{
-            "constant": false,
-            "inputs": [],
-            "name": "getValue",
-            "outputs": [{
-                "name": "",
-                "type": "string"
-            }],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [{
-                "name": "str",
-                "type": "string"
-            }],
-            "name": "setValue",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        }
-    ];
-    
+### 智能合约开发
 
-### 检测web3环境
+AppChain 上的智能合约开发支持使用以太坊的 [Solidity](https://en.wikipedia.org/wiki/Solidity) 语言和 CITA 的原生开发语言 Rust。
 
-检测web3实例是否已经存在。一般来说，DApp浏览器环境（如Neuron）会给DApp应用注入web3实例，并提供交易签名等方法。所以我们在这里检测环境中是否已经有了实例，如果没有则自己构建；如果已经存在，则使用DApp浏览器的web3实例。
+使用 Solidity 语言在 AppChain 上进行合约开发与在以太坊上进行合约开发完全一致。可以参考[ Solidity 官方文档](https://solidity.readthedocs.io/en/v0.4.25/)和网上其他资料进行学习。在开发的时候可以使用 [Remix](https://remix.ethereum.org/) 进行合约调试。（暂时不能直接进行合约部署，相关解决方案正在开发中）
 
-    // check first if the web3 is available
-    if (typeof web3 !== 'undefined') {
-        web3 = new Web3(web3.currentProvider);
-    } else {
-        // set the provider you want from Web3.providers
-        web3 = new Web3(new Web3.providers.HttpProvider(chainAddress));
-    }
-    
+Rust 语言的智能合约一般用来开发[系统合约](https://docs.nervos.org/cita/#/chain/config_tool?id=%E7%B3%BB%E7%BB%9F%E5%90%88%E7%BA%A6)。我们也提供了一篇简单的教程来讲解如何[开发一个 Rust 的智能合约](https://github.com/cryptape/dapp-demos/tree/develop/rust-contract)。
 
-### 实现合约方法
+使用
 
-实现getValue方法
+?> 目前支持的 Solidity 版本可以参考 [测试链信息](quick-start/deploy-appchain.md#测试链)
 
-    //get value from contract.
-    function getValue() {
-        if (contractAddress != undefined && contractAddress != "default") {
-            var contract = web3.eth.contract(abi).at(contractAddress);
-            contract.getValue.call(
-                function (error, result) {
-                    if (!error) {
-                        console.log("result from contract: " + result);
-                        document.getElementById("valueFromContract").value = result;
-                    } else {
-                        console.error("Cannot get value. Error: " + error);
-                    }
-                }
-            )
-        } else {
-            console.err("Failed to get value: conrtact address is not correct.");
-        }
-    }
-    
+<!-- 这里未来可以补充一个表，用来放哪个版本的 CITA 支持哪个版本的 solidity -->
 
-实现setValue方法。`validUntilBlock`是一个CITA独有的，非常先进的东西，具体请参考[CITA-FAQ](https://docs.nervos.org/cita/#/reference/faq)。`setValidUntilBlock`方法是用来获得块高度并设置`validUntilBlock`的，它的实现在上面的示例源文件中可以找到。
+### AppChain 交易的结构
 
-    //set value from contract.
-    function setValue() {
-        var valueToSet = document.getElementById("valueToContract").value;
-        initBlockNumber(web3, function (params) {
-            var commonParams = params
-            var contract = web3.eth.contract(abi).at(contractAddress);
-    
-            var result = contract.setValue(
-                valueToSet, {
-                    ...commonParams,
-                    from: "0dbd369a741319fa5107733e2c9db9929093e3c7"
-                }
-            );
-            console.log("result of setValue " + result);
-        })
-    }
-    
+| **名称**            | **类型** | **必需**       | **描述**                                                                                                                                                                                    |
+| ----------------- | ------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `from`            | string | 是            | 交易的发送方的地址                                                                                                                                                                                 |
+| `to`              | string | 是，创建合约的时必需为空 | 交易的接收方的地址                                                                                                                                                                                 |
+| `privateKey`      | string | （见下面解释）      | 对交易进行签名的私钥                                                                                                                                                                                |
+| `nonce`           | int    | 是            | 交易 nonce，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84nonce%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F)               |
+| `quota`           | int    | 是            | 交易花费的费用，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84quota%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F)                                           |
+| `chainId`         | int    | 是            | 链的 ID                                                                                                                                                                                     |
+| `version`         | int    | 是            | 链的版本？                                                                                                                                                                                     |
+| `validUntilBlock` | int    | 是            | 该交易的有效区块高度，[详见 FAQ](https://docs.nervos.org/cita/#/reference/faq?id=%E4%BA%A4%E6%98%93%E4%B8%AD%E7%9A%84valid_until_block%E6%98%AF%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F) |
+| `value`           | string | 是            | 该交易所转的币的数量                                                                                                                                                                                |
+| `data`            | string | 是            | 该交易所包含的 data 信息                                                                                                                                                                           |
 
-`DAPP` 发起交易并交由 `Neuron` 钱包的本地私钥签名，并最终由钱包将交易发至链上，发送交易的结果会通过以下三个回调方法通知 `DAPP` 。
+关于 `privateKey` 字段如何填写,首先看是否有钱包环境:  
+如果有钱包环境，交易结构体里面 **不能加** `privateKey` 字段（会被 SDK 签名而不是被钱包签名）  
+如果没有钱包环境，则可以通过以下两种方式来选择签名使用的私钥
 
-    cancelled()                  // 交易取消
-    onSignSuccessful(hexHash)    // 交易成功，并返回交易hash
-    onSignFail(errMessage)       // 交易失败，并返回失败错误信息
-    
+1. 在交易结构体里面加入 `privateKey` 字段
+2. 在 SDK 的 account 里面加入一个账户
 
-## 测试DApp
+!> 发送交易时，SDK 优先使用交易结构体里面的私钥进行签名
 
-我们可以通过使用python在本地启动一个简单的http服务，并使用Neuron来访问这个DApp。Python的安装请参照[Python网站](https://www.python.org/downloads/)。
+### DApp 的 manifest.json 文件
 
-    python -m SimpleHTTPServer 3000
-    
+Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一个开源项目，这就意味着会有很多条 AppChain 同时存在，承载不同的业务。同时也意味着一个 DApp 可能会同时使用多条 AppChain 上的资产来实现一些功能。所以，为了让 DApp 的运行环境（钱包环境）知道该 DApp 要使用哪些 AppChain 上的资产，需要使用一个 `manifest.json` 文件来对 DApp 将要使用的链进行配置。除了对多链的配置以外，`manifest.json` 还包括了一些对 DApp 本身的配置。具体协议请参考\[多链协议\](miscellaneous/multichain.md#dapp-ui-与终端钱包握手)。在 Demo First Forever 里面我们给出了一个 manifest 文件的[示例](https://github.com/cryptape/dapp-demos/blob/master/first_forever/public/manifest.json)。
 
-查看自己本机的ip，并打开Neuron，在浏览器页面输入地址，如`http://192.168.2.239:3000`。
+## Demo 和教程
+
+我们准备了以下 demo 来帮助你入门在 AppChain 上的开发。每一个 demo 的 readme 里面都有对应的教程。所有 demo 的源文件都这个 [GitHub 仓库](https://github.com/cryptape/dapp-demos/tree/master)里。
+
+* [First Forever](https://github.com/cryptape/dapp-demos/tree/master/first_forever)  
+    一个带你从零开始学习 AppChain DApp 开发的小 demo
+* [NervosAPI](https://github.com/cryptape/dapp-demos/tree/master/nervos-api)  
+    一个包含了 SDK `nervos.js` 所有方法的 demo 页面。
+* [Token Factory](https://github.com/cryptape/dapp-demos/tree/master/token-factory)  
+    一个从以太坊移植到 AppChain 上的 DApp。
+* [Rust Contract](https://github.com/cryptape/dapp-demos/tree/develop/rust-contract)  
+    一个用 Rust 编写智能合约的简单教程
+
+## 参考阅读
+
+* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
