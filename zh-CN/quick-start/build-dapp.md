@@ -80,4 +80,4 @@ Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一
 
 
 ## 参考阅读
-* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
+* Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
