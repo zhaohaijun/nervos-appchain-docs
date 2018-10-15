@@ -63,16 +63,21 @@ Nervos AppChain 是一个所有人可以用来做自己的一条 AppChain 的一
 
 
 ## Demo 和教程
-我们准备了以下 demo 来帮助你入门在 AppChain 上的开发。每一个 demo 的 readme 里面都有对应的教程。所有 demo 的源文件都这个 [GitHub 仓库](https://github.com/cryptape/dapp-demos/tree/master)里。
+我们准备了以下 demo 来帮助你入门在 AppChain 上的开发。每一个 demo 的 readme 里面都有对应的教程。
 
-* [First Forever](https://github.com/cryptape/dapp-demos/tree/master/first_forever)  
+* [First Forever](https://github.com/cryptape/first-forever-demo)  
 一个带你从零开始学习 AppChain DApp 开发的小 demo
-* [NervosAPI](https://github.com/cryptape/dapp-demos/tree/master/nervos-api)  
+* [AppChain API](https://github.com/cryptape/appchain-api-demo)  
 一个包含了 SDK `nervos.js` 所有方法的 demo 页面。
-* [Token Factory](https://github.com/cryptape/dapp-demos/tree/master/token-factory)  
+* [Token Factory](https://github.com/cryptape/token-factory-demo)  
 一个从以太坊移植到 AppChain 上的 DApp。
+* [Pet-Shop](https://github.com/cryptape/pet-shop-demo)  
+一个使用 AppChain Truffle Box 实现的 Pet-Shop demo。
+* [Drizzle](https://github.com/cryptape/drizzle-demo)  
+一个使用 [AppChain Truffle Migrate](https://github.com/cryptape/appchain-truffle-migrate) 来实现多合约部署的 demo。
 * [Rust Contract](https://github.com/cryptape/dapp-demos/tree/develop/rust-contract)  
 一个用 Rust 编写智能合约的简单教程
+
 
 ## 参考阅读
 * Truffle Box 官方文档：https://truffleframework.com/docs/truffle/overview
