@@ -3,7 +3,7 @@
 在开始正式开发 AppChain DApp 之前，我们需要先有一条 AppChain。可以从以下方案中进行选择：
 
 * [测试链（推荐）](#测试链)
-* [自行部署](https://docs.nervos.org/cita/#/chain/getting_started)
+* [自行部署](https://docs.nervos.org/cita/#/chain/getting_started?version=v0.20.2)
 * [使用华为云一键部署](#华为云一键部署)
 * [使用万云 BaaS 服务](#万云BaaS服务)
 
